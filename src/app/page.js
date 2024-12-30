@@ -26,8 +26,6 @@ export default function Page() {
         <BorderBeam size={400} duration={12} delay={9} />
       </div>
 
-
-
       <div className="relative z-10 flex h-[500px] w-full flex-col items-center justify-center gap-4 lg:h-[250px] lg:flex-row">
         <WordPullUp className="text-4xl">This is Adrij!</WordPullUp>
         <Link href="/portfolio">

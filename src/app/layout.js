@@ -1,7 +1,9 @@
 import localFont from "next/font/local";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
-import Navbar from "@/components/self-made/dock";
+import Navbar from "@/components/self-made/navbar";
+
+import Footer from "@/components/self-made/dock";
 import ThemeToggle from "@/components/self-made/themetoggle";
 import { AppWindow } from "lucide-react";
 
@@ -28,15 +30,9 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ThemeProvider attribute="class">
-          <div className="fixed top-4 left-4 z-10 flex items-center text-sm">
-            <AppWindow className="w-6 h-6 mr-2" />
-            Full Stack Developer
-          </div>
-          <div className="fixed top-4 right-4 z-10">
-            <ThemeToggle />
-          </div>
-          {children}
           <Navbar />
+          {children}
+          <Footer />
         </ThemeProvider>
       </body>
     </html>

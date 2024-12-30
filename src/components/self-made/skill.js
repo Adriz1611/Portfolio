@@ -3,98 +3,104 @@ import { MagicCard } from "../magic-ui/magic-card";
 import IconCloud from "../magic-ui/icon-cloud";
 
 const skillsData = [
-  { title: "Languages", skills: "Javascript, C++" },
-  { title: "Backend", skills: "Node, Express, NestJS" },
-  { title: "Databases", skills: "MongoDB, MySQL, PostgreSQL" },
-  { title: "BAAS", skills: "Firebase, Supabase" },
-  { title: "Tools", skills: "Git, Postman, Figma, Apollo GraphQL" },
-  { title: "Styling", skills: "Tailwind, NextUI, Shadcn" },
+    { title: "Languages", skills: "Javascript, C++" },
+    { title: "Backend", skills: "Node, Express, NestJS" },
+    { title: "Databases", skills: "MongoDB, MySQL, PostgreSQL" },
+    { title: "BAAS", skills: "Firebase, Supabase" },
+    { title: "Tools", skills: "Git, Postman, Figma, Apollo GraphQL" },
+    { title: "Styling", skills: "Tailwind, NextUI, Shadcn" },
 ];
 
 const slugs = [
-  "typescript",
-  "javascript",
-  "react",
-  "html5",
-  "css3",
-  "nodedotjs",
-  "express",
-  "nextdotjs",
-  "prisma",
-  "amazonaws",
-  "postgresql",
-  "firebase",
-  "nginx",
-  "vercel",
-  "docker",
-  "git",
-  "github",
-  "gitlab",
-  "visualstudiocode",
-  "figma",
-  "graphql",
-  "supabase",
-  "tailwindcss",
+    "typescript",
+    "javascript",
+    "react",
+    "html5",
+    "css3",
+    "nodedotjs",
+    "express",
+    "nextdotjs",
+    "prisma",
+    "amazonaws",
+    "postgresql",
+    "firebase",
+    "nginx",
+    "vercel",
+    "docker",
+    "git",
+    "github",
+    "gitlab",
+    "visualstudiocode",
+    "figma",
+    "graphql",
+    "supabase",
+    "tailwindcss",
 ];
 
 const Skill = () => {
-  return (
-    <div className="p-6 min-h-screen bg-white dark:bg-black text-black dark:text-white">
-      <div className="max-w-4xl mx-auto">
-        <h2 className="text-3xl font-bold mb-6 flex items-center">
-          <span className="mr-2">👋</span> About Me
-        </h2>
-        <div className="space-y-6">
-          <p className="text-lg leading-relaxed animate-fade-in">
-            Hey there! I'm{" "}
-            <span className="font-bold text-purple-600 dark:text-purple-400">
-              Adrij Bhadra
-            </span>
-            , a frontend wizard turning coffee into code and design challenges
-            into digital masterpieces. From New Delhi, India, I'm on a mission
-            to create web experiences that leave users speechless. 🚀
-          </p>
-          <p className="text-lg leading-relaxed">
-            Currently pursuing my{" "}
-            <span className="font-bold">B.Tech in Computer Science</span>, I've
-            already made waves by{" "}
-            <span className="text-purple-600 dark:text-purple-400">
-              boosting page speeds by 40%
-            </span>{" "}
-            and crafting animations that keep users glued to their screens at
-            places like <span className="font-bold">Altere</span> and{" "}
-            <span className="font-bold">Changespark Foundation</span>.
-          </p>
-          <p className="text-lg leading-relaxed mb-8">
-            When I'm not architecting lightning-fast interfaces, you'll find me
-            leading development teams and turning complex challenges into
-            elegant solutions. Ready to create something extraordinary? Let's
-            build the future together! ✨
-          </p>
-        </div>
-        <div>
-          <IconCloud iconSlugs={slugs} />
-        </div>
-        <div className="p-6 bg-white dark:bg-black mt-10">
-          <div className="max-w-4xl mx-auto shadow-md rounded-lg p-6 bg-white dark:bg-black">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {skillsData.map((skill, index) => (
-                <MagicCard
-                  key={index}
-                  className="cursor-pointer flex-col items-center justify-center p-4 text-center"
-                >
-                  <h3 className="text-xl font-semibold mb-2">{skill.title}</h3>
-                  <p className="text-black dark:text-white font-light ">
-                    {skill.skills}
-                  </p>
-                </MagicCard>
-              ))}
+    return (
+        <div className="p-6 pt-20 min-h-screen bg-white dark:bg-black text-black dark:text-white">
+            <div className="max-w-5xl mx-auto">
+                <h2 className="text-4xl font-extrabold mb-6 flex items-center">
+                    <span className="mr-2">👋</span> About Me
+                </h2>
+                <div className="space-y-6">
+                    <p className="text-lg leading-relaxed animate-fade-in text-justify">
+                        Hey there! I'm 
+                        <span className="font-bold p-2 text-black dark:text-white">
+                            Adrij Bhadra
+                        </span>
+                        , a passionate developer currently in my
+                        <span className="font-bold"> 3rd year of B.Tech in Computer Science</span>, living in
+                        New Delhi, India.
+                    </p>
+                    <p className="text-lg leading-relaxed text-justify">
+                        I love starting new things and exploring them as I proceed. My
+                        journey revolves around creating solutions that solve real-world
+                        problems and building tools that can be used by people.
+                    </p>
+                    <p className="text-lg leading-relaxed text-justify">
+                        My interests lie in <span className="font-bold">cloud</span> and
+                        <span className="font-bold"> DevOps</span>. I've run various home
+                        projects like self-hosted photo and video management systems, home
+                        servers, and also dabbled in cybersecurity (script kiddie) and a
+                        little bit of blockchain.
+                    </p>
+                    <p className="text-lg leading-relaxed mb-8 text-justify">
+                        However, I found my true calling in developing
+                        <span className="text-black dark:text-white"> full-stack applications</span>
+                        and studying modern cloud practices. Let's create something
+                        extraordinary together! ✨
+                    </p>
+                </div>
+                <div>
+                    <IconCloud iconSlugs={slugs} />
+                </div>
+                <div className="p-6 bg-white dark:bg-black mt-10 rounded-xl shadow-lg">
+                    <div className="max-w-4xl mx-auto">
+                        <h3 className="text-2xl font-semibold mb-4 text-center text-black dark:text-white">
+                            Skills
+                        </h3>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                            {skillsData.map((skill, index) => (
+                                <MagicCard
+                                    key={index}
+                                    className="cursor-pointer flex-col items-center justify-center p-4 text-center bg-white dark:bg-black rounded-lg h-32"
+                                >
+                                    <h3 className="text-xl font-semibold mb-2 text-black dark:text-white">
+                                        {skill.title}
+                                    </h3>
+                                    <p className="text-gray-700 dark:text-gray-300 font-light">
+                                        {skill.skills}
+                                    </p>
+                                </MagicCard>
+                            ))}
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-    </div>
-  );
+    );
 };
 
 export default Skill;

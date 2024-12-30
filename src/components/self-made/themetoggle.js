@@ -1,4 +1,3 @@
-// components/ThemeToggle.js
 'use client';
 
 import { useTheme } from 'next-themes';
@@ -17,7 +16,7 @@ const ThemeToggle = () => {
   return (
     <button
       onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-      className="fixed top-4 right-4 p-2 rounded-full bg-gray-200 dark:bg-gray-700"
+      className="p-2 rounded-full bg-gray-200 dark:bg-gray-700"
     >
       {theme === 'dark' ? <Sun className="w-6 h-6" /> : <Moon className="w-6 h-6" />}
     </button>

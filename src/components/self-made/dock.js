@@ -57,7 +57,7 @@ export const DATA = {
   },
 };
 
-export default function Navbar() {
+export default function Footer() {
   return (
     <div className="fixed bottom-10 w-full z-10">
       <TooltipProvider>
