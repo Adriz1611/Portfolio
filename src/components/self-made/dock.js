@@ -90,6 +90,7 @@ export default function Footer() {
                 <TooltipTrigger asChild>
                   <Link
                     href={social.url}
+                    target="_blank"
                     aria-label={social.name}
                     className={cn(
                       buttonVariants({ variant: "ghost", size: "icon" }),

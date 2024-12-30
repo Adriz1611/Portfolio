@@ -1,6 +1,7 @@
 import React from 'react';
 import ThemeToggle from './themetoggle';
 import { AppWindow } from 'lucide-react';
+import Link from 'next/link';
 
 const Navbar = () => {
     return (
@@ -8,7 +9,9 @@ const Navbar = () => {
             <div className="flex justify-between items-center p-4">
                 <div className="flex items-center text-sm">
                     <AppWindow className="w-6 h-6 mr-2" />
+                    <Link href="/">
                     Full Stack Developer
+                    </Link>
                 </div>
                 <div className="flex items-center">
                     <ThemeToggle />

@@ -5,6 +5,7 @@ import Particles from "@/components/magic-ui/particles";
 import WordPullUp from "@/components/magic-ui/word-pull-up";
 import InteractiveHoverButton from "@/components/magic-ui/interactive-hover-button";
 import { BorderBeam } from "@/components/magic-ui/border-beam";
+import { RainbowButton } from "@/components/magic-ui/rainbow-button";
 import Link from "next/link";
 
 export default function Page() {
@@ -30,6 +31,20 @@ export default function Page() {
           <InteractiveHoverButton text="Continue" className="w-40 border-4" />
         </Link>
       </div>
+
+      <iframe
+        src="https://github-readme-streak-stats.herokuapp.com/?user=Adriz1611&theme=blueberry"
+        className="absolute bottom-0 left-0 z-20 hidden md:block"
+        width="250"
+        height="100"
+        frameBorder="0"
+      ></iframe>
+
+      <Link href="/resume">
+        <RainbowButton
+          className="absolute bottom-4 right-4 z-20"
+        > Resume </RainbowButton>
+      </Link>
     </main>
   );
 }

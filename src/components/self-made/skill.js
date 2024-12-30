@@ -68,7 +68,7 @@ const Skill = () => {
                     </p>
                     <p className="text-lg leading-relaxed mb-8 text-justify">
                         However, I found my true calling in developing
-                        <span className="text-black dark:text-white"> full-stack applications</span>
+                        <span className="text-black dark:text-white"> full-stack applications </span>
                         and studying modern cloud practices. Let's create something
                         extraordinary together! ✨
                     </p>
