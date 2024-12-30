@@ -32,15 +32,15 @@ export default function Page() {
         </Link>
       </div>
 
-      <iframe
+      {/* <iframe
         src="https://github-readme-streak-stats.herokuapp.com/?user=Adriz1611&theme=blueberry"
         className="absolute bottom-0 left-0 z-20 hidden md:block"
         width="250"
         height="100"
         frameBorder="0"
-      ></iframe>
+      ></iframe> */}
 
-      <Link href="/resume">
+      <Link target="_blank" href="https://drive.google.com/file/d/1_q60-zB7OcxVDVrTfRczv_zxxFBIoPK6/view?usp=sharing">
         <RainbowButton
           className="absolute bottom-4 right-4 z-20"
         > Resume </RainbowButton>
