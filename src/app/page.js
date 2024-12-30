@@ -1,12 +1,10 @@
 "use client";
 
 import { useTheme } from "next-themes";
-//import ThemeToggle from "@/components/self-made/themetoggle";
 import Particles from "@/components/magic-ui/particles";
 import WordPullUp from "@/components/magic-ui/word-pull-up";
 import InteractiveHoverButton from "@/components/magic-ui/interactive-hover-button";
 import { BorderBeam } from "@/components/magic-ui/border-beam";
-import { AppWindow } from "lucide-react";
 import Link from "next/link";
 
 export default function Page() {
