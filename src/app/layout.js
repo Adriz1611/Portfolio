@@ -1,6 +1,7 @@
 import localFont from "next/font/local";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
+import Navbar from "@/components/self-made/dock";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -26,6 +27,7 @@ export default function RootLayout({ children }) {
       >
         <ThemeProvider attribute="class">
         {children}
+        <Navbar />
         </ThemeProvider>
       </body>
     </html>
