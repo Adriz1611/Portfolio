@@ -13,11 +13,12 @@
 
 
 import React from 'react'
+import BlurIn from '@/components/magic-ui/blur-in'
 
 const page = () => {
   return (
     <div>
-      
+      <BlurIn>Hi This is Adrij !</BlurIn>
     </div>
   )
 }

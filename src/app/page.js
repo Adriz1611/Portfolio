@@ -3,10 +3,10 @@
 import { useTheme } from "next-themes";
 import ThemeToggle from "@/components/self-made/themetoggle";
 import Particles from "@/components/magic-ui/particles";
-import TypingAnimation from "@/components/magic-ui/typing-animation";
+import WordPullUp from "@/components/magic-ui/word-pull-up";
 import InteractiveHoverButton from "@/components/magic-ui/interactive-hover-button";
 import { BorderBeam } from "@/components/magic-ui/border-beam";
-
+import { AppWindow } from "lucide-react";
 
 import Link from "next/link";
 
@@ -24,21 +24,25 @@ export default function Page() {
         color={theme === "dark" ? "#ffffff" : "#000000"}
       />
 
-
-
       {/* BorderBeam container with controlled dimensions */}
       <div className="max-w-full max-h-full">
         <BorderBeam size={700} duration={12} delay={9} />
       </div>
 
       {/* Theme Toggle */}
-      <div className="fixed top-4 right-4 z-10">
-        <ThemeToggle />
-      </div>
+        <div className="fixed top-4 right-4 z-10">
+          <ThemeToggle />
+        </div>
 
-      {/* Typing Animation and Button */}
+        {/* Full Stack Developer Text with Icon */}
+          <div className="fixed top-4 left-4 z-10 flex items-center text-sm">
+            <AppWindow className="w-6 h-6 mr-2" />
+            Full Stack Developer
+          </div>
+
+          {/* Typing Animation and Button */}
       <div className="relative z-10 flex h-[500px] w-full flex-col items-center justify-center gap-4 lg:h-[250px] lg:flex-row">
-        <TypingAnimation>Hi This is Adrij !</TypingAnimation>
+        <WordPullUp className="text-4xl">This is Adrij!</WordPullUp>
         <Link href="/portfolio">
           <InteractiveHoverButton text="Continue" className="w-40 border-4" />
         </Link>
