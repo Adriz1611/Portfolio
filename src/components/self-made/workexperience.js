@@ -8,7 +8,7 @@ import { Card } from "@/components/shadcn-ui/card";
 import { ArrowUpRight } from "lucide-react";
 
 const WorkExperience = ({ experiences }) => (
-  <div className="p-6 pt-20 bg-white dark:bg-black text-black dark:text-white">
+  <div className="p-6 pt-20 max-w-screen bg-white dark:bg-black text-black dark:text-white">
     <div className="max-w-5xl mx-auto">
       <h2 className="text-4xl font-extrabold mb-6 text-center">
         Work Experience
@@ -71,7 +71,7 @@ export default function WorkExperiencePage() {
     {
       logoUrl: "https://cfstatic.give.do/daa061c6-3ca7-4aba-8fbe-e6987aaacb88.png",
       altText: "Changespark",
-      title: "CHangespark Foundation",
+      title: "Changespark",
       subtitle: "Full Stack Developer Internship",
       href: "https://changespark.in/",
       badges: ["Supabase", "Tailwindcss", "Next.js"],
