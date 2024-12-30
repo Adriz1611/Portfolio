@@ -8,6 +8,7 @@ import {
   LinkedinIcon,
   GithubIcon,
   YoutubeIcon,
+  BriefcaseBusiness
 } from "lucide-react";
 import Link from "next/link";
 import React from "react";
@@ -32,29 +33,24 @@ export const Icons = {
 
 export const DATA = {
   navbar: [
-    { href: "#", icon: HomeIcon, label: "Home" },
-    { href: "#", icon: PencilIcon, label: "Blog" },
+    { href: "/", icon: HomeIcon, label: "Home" },
+    { href: "/portfolio", icon: BriefcaseBusiness, label: "Blog" },
   ],
   contact: {
     social: {
       GitHub: {
         name: "GitHub",
-        url: "#",
+        url: "https://github.com/Adriz1611",
         icon: Icons.github,
       },
       LinkedIn: {
         name: "LinkedIn",
-        url: "#",
+        url: "https://www.linkedin.com/in/adrijbhadra/",
         icon: Icons.linkedin,
-      },
-      Youtube: {
-        name: "YouTube",
-        url: "#",
-        icon: Icons.youtube,
       },
       email: {
         name: "Send Email",
-        url: "#",
+        url: "mailto:adrijbhadra@gmail.com",
         icon: Icons.email,
       },
     },
