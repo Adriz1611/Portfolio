@@ -59,7 +59,7 @@ export const DATA = {
 
 export default function Footer() {
   return (
-    <div className="fixed bottom-10 w-full z-10">
+    <div className="fixed bottom-10 w-full z-50">
       <TooltipProvider>
         <Dock direction="middle">
           {DATA.navbar.map((item) => (
