@@ -10,15 +10,15 @@ import { RainbowButton } from "@/components/magic-ui/rainbow-button";
 import Link from "next/link";
 
 export default function Page() {
-  const { theme } = useTheme();
+  const { theme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   // Ensure component is mounted to avoid hydration mismatch
   useEffect(() => setMounted(true), []);
 
-  const particleColor =
-    theme === "dark" ? "#ffffff" : theme === "light" ? "#000000" : "#000000";
+  if (!mounted) return null; // Render nothing until the theme is resolved
 
+  const particleColor = resolvedTheme === "dark" ? "#ffffff" : "#000000";
 
   return (
     <main className="relative flex flex-col items-center justify-center min-h-screen min-w-full bg-white dark:bg-black overflow-hidden">
@@ -27,7 +27,7 @@ export default function Page() {
         quantity={500}
         ease={80}
         refresh
-        color={theme === "dark" ? "#ffffff" : "#000000"}
+        color={particleColor} // Use the resolved theme
       />
 
       <div className="max-w-full max-h-full">
