@@ -16,7 +16,9 @@ export default function Page() {
   // Ensure component is mounted to avoid hydration mismatch
   useEffect(() => setMounted(true), []);
 
-  if (!mounted) return null;
+  const particleColor =
+    theme === "dark" ? "#ffffff" : theme === "light" ? "#000000" : "#000000";
+
 
   return (
     <main className="relative flex flex-col items-center justify-center min-h-screen min-w-full bg-white dark:bg-black overflow-hidden">
