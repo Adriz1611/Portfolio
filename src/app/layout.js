@@ -2,6 +2,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
 import Navbar from "@/components/self-made/navbar";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import Footer from "@/components/self-made/dock";
 
@@ -30,6 +31,7 @@ export default function RootLayout({ children }) {
         <ThemeProvider attribute="class">
           <Navbar />
           {children}
+          <SpeedInsights />
           <Footer />
         </ThemeProvider>
       </body>
