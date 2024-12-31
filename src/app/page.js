@@ -1,6 +1,7 @@
 "use client";
 
 import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 import Particles from "@/components/magic-ui/particles";
 import WordPullUp from "@/components/magic-ui/word-pull-up";
 import InteractiveHoverButton from "@/components/magic-ui/interactive-hover-button";
@@ -10,6 +11,12 @@ import Link from "next/link";
 
 export default function Page() {
   const { theme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  // Ensure component is mounted to avoid hydration mismatch
+  useEffect(() => setMounted(true), []);
+
+  if (!mounted) return null;
 
   return (
     <main className="relative flex flex-col items-center justify-center min-h-screen min-w-full bg-white dark:bg-black overflow-hidden">

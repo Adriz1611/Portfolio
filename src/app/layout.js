@@ -4,8 +4,6 @@ import { ThemeProvider } from "next-themes";
 import Navbar from "@/components/self-made/navbar";
 
 import Footer from "@/components/self-made/dock";
-import ThemeToggle from "@/components/self-made/themetoggle";
-import { AppWindow } from "lucide-react";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
