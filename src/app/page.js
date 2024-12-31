@@ -9,6 +9,7 @@ import { BorderBeam } from "@/components/magic-ui/border-beam";
 import { RainbowButton } from "@/components/magic-ui/rainbow-button";
 import Link from "next/link";
 
+
 export default function Page() {
   const { theme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
