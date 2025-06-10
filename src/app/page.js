@@ -40,7 +40,7 @@ export default function Page() {
         <Link href="/portfolio">
           <InteractiveHoverButton text="Continue" className="w-40 border-4" />
         </Link>
-        <Link target="_blank" href="/Adrijresume.pdf">
+        <Link target="_blank" href="/Adrij_Resumee.pdf">
           <RainbowButton className="w-40 border-4 md:fixed md:bottom-4 md:right-4 md:w-auto">
             Resume
           </RainbowButton>
