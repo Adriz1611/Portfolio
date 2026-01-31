@@ -58,7 +58,7 @@ export default function PortfolioPage() {
   );
 
   return (
-    <main className="relative min-h-screen bg-background overflow-hidden">
+    <main className="relative min-h-screen w-full bg-background overflow-hidden">
       {/* Background Particles */}
       {mounted && (
         <Particles
@@ -74,23 +74,23 @@ export default function PortfolioPage() {
       <ScrollProgress className="top-0 z-50 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500" />
 
       {/* Hero Section */}
-      <section className="relative z-10 pt-32 pb-12 px-6">
-        <div className="max-w-5xl mx-auto text-center space-y-6">
+      <section className="relative z-10 pt-24 sm:pt-32 pb-8 sm:pb-12 px-4 sm:px-6">
+        <div className="max-w-5xl mx-auto text-center space-y-4 sm:space-y-6">
           <BlurFade delay={0.25} inView>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-muted/50 border border-border/50 text-sm text-muted-foreground mb-4 backdrop-blur-sm">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-muted/50 border border-border/50 text-xs sm:text-sm text-muted-foreground mb-3 sm:mb-4 backdrop-blur-sm">
               <span>🚀</span>
               <span>My Journey</span>
             </div>
           </BlurFade>
 
-          <div className="flex justify-center items-center">
-            <WordPullUp className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/70">
+          <div className="flex justify-center items-center px-4">
+            <WordPullUp className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/70">
               Portfolio & Skills
             </WordPullUp>
           </div>
 
           <BlurFade delay={0.5} inView>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed px-4">
               A comprehensive look at my technical expertise, professional
               experience, and the projects that define my journey as a
               developer.
@@ -99,16 +99,16 @@ export default function PortfolioPage() {
 
           {/* About Me Section */}
           <BlurFade delay={0.7} inView>
-            <div className="mt-12 max-w-3xl mx-auto">
-              <div className="p-6 md:p-8 rounded-2xl bg-muted/30 backdrop-blur-sm border border-border/50 shadow-lg">
-                <h3 className="text-2xl font-bold mb-6 flex items-center gap-2">
-                  <span className="text-2xl">👋</span>
+            <div className="mt-8 sm:mt-12 max-w-3xl mx-auto px-4">
+              <div className="p-4 sm:p-6 md:p-8 rounded-2xl bg-muted/30 backdrop-blur-sm border border-border/50 shadow-lg">
+                <h3 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 flex items-center gap-2">
+                  <span className="text-xl sm:text-2xl">👋</span>
                   <span>Who Am I?</span>
                 </h3>
 
                 {/* Terminal Showcase */}
-                <div className="mb-6 flex justify-center">
-                  <Terminal className="max-w-full">
+                <div className="mb-4 sm:mb-6 w-full">
+                  <Terminal className="w-full mx-auto">
                     <TypingAnimation duration={40}>$ whoami</TypingAnimation>
                     <AnimatedSpan className="text-green-500">
                       adriz - terminal native • homelab enthusiast
@@ -134,7 +134,7 @@ export default function PortfolioPage() {
                   </Terminal>
                 </div>
 
-                <div className="space-y-4 text-left text-muted-foreground">
+                <div className="space-y-3 sm:space-y-4 text-left text-muted-foreground text-sm sm:text-base">
                   <p className="leading-relaxed">
                     I'm a{" "}
                     <Highlighter
@@ -221,7 +221,7 @@ export default function PortfolioPage() {
       </section>
 
       {/* Content Sections */}
-      <div className="relative z-10 space-y-16 pb-8">
+      <div className="relative z-10 space-y-8 sm:space-y-16 pb-8 px-4 sm:px-0">
         <BlurFade delay={0.2} inView inViewMargin="-50px">
           <section id="skills" className="relative">
             <Skill showTitle={false} transparent={true} />

@@ -88,22 +88,8 @@ export default function Page() {
 
   useEffect(() => setMounted(true), []);
 
-  if (!mounted) {
-    // Return minimal skeleton to prevent layout shift
-    return (
-      <main className="relative flex flex-col items-center justify-center min-h-screen min-w-full bg-background overflow-hidden">
-        <div className="relative z-10 flex flex-col items-center justify-center gap-8 max-w-4xl mx-auto px-6 text-center">
-          <div className="space-y-6">
-            <div className="h-16 w-64 bg-muted/20 rounded animate-pulse mx-auto" />
-            <div className="h-6 w-96 bg-muted/20 rounded animate-pulse mx-auto" />
-          </div>
-        </div>
-      </main>
-    );
-  }
-
   return (
-    <main className="relative flex flex-col items-center justify-center min-h-screen min-w-full bg-background overflow-hidden">
+    <main className="relative flex flex-col items-center justify-center min-h-screen w-full bg-background overflow-hidden">
       {mounted && (
         <Particles
           className="absolute inset-0 z-0"
@@ -115,24 +101,24 @@ export default function Page() {
       )}
 
       {/* Subtle border beam */}
-      <div className="max-w-full max-h-full">
+      <div className="hidden sm:block max-w-full max-h-full">
         <BorderBeam size={400} duration={12} delay={9} />
       </div>
 
       {/* Main content */}
-      <div className="relative z-10 flex flex-col items-center justify-center gap-8 max-w-4xl mx-auto px-6 text-center">
+      <div className="relative z-10 flex flex-col items-center justify-center gap-6 sm:gap-8 max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-0 text-center w-full">
         {/* Hero text */}
-        <div className="space-y-6">
-          <WordPullUp className="text-4xl md:text-6xl font-bold text-foreground">
+        <div className="space-y-4 sm:space-y-6 w-full">
+          <WordPullUp className="text-3xl sm:text-4xl md:text-6xl font-bold text-foreground px-2">
             This is Adrij!
           </WordPullUp>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed px-4">
             A generalist who codes. Full Stack • DevOps • Generative AI
           </p>
         </div>
 
         {/* Terminal Preview */}
-        <div className="w-full max-w-md">
+        <div className="w-full max-w-md px-2">
           <Terminal>
             <TypingAnimation duration={50}>$ ls ~/projects</TypingAnimation>
             <AnimatedSpan className="text-green-500">
@@ -146,43 +132,75 @@ export default function Page() {
         </div>
 
         {/* Scrolling Tech Stack */}
-        <div className="w-full pt-8">
-          <ScrollVelocityContainer className="text-2xl md:text-3xl font-bold">
+        <div className="w-full pt-4 sm:pt-8 overflow-hidden">
+          <ScrollVelocityContainer className="text-lg sm:text-2xl md:text-3xl font-bold">
             <ScrollVelocityRow baseVelocity={15} direction={1}>
-              <span className="mx-8 text-muted-foreground/60">React.js</span>
-              <span className="mx-8 text-muted-foreground/60">Next.js</span>
-              <span className="mx-8 text-muted-foreground/60">Docker</span>
-              <span className="mx-8 text-muted-foreground/60">Kubernetes</span>
-              <span className="mx-8 text-muted-foreground/60">AWS</span>
-              <span className="mx-8 text-muted-foreground/60">Node.js</span>
-              <span className="mx-8 text-muted-foreground/60">Python</span>
-              <span className="mx-8 text-muted-foreground/60">TypeScript</span>
+              <span className="mx-4 sm:mx-8 text-muted-foreground/60">
+                React.js
+              </span>
+              <span className="mx-4 sm:mx-8 text-muted-foreground/60">
+                Next.js
+              </span>
+              <span className="mx-4 sm:mx-8 text-muted-foreground/60">
+                Docker
+              </span>
+              <span className="mx-4 sm:mx-8 text-muted-foreground/60">
+                Kubernetes
+              </span>
+              <span className="mx-4 sm:mx-8 text-muted-foreground/60">AWS</span>
+              <span className="mx-4 sm:mx-8 text-muted-foreground/60">
+                Node.js
+              </span>
+              <span className="mx-4 sm:mx-8 text-muted-foreground/60">
+                Python
+              </span>
+              <span className="mx-4 sm:mx-8 text-muted-foreground/60">
+                TypeScript
+              </span>
             </ScrollVelocityRow>
             <ScrollVelocityRow baseVelocity={15} direction={-1}>
-              <span className="mx-8 text-muted-foreground/60">PostgreSQL</span>
-              <span className="mx-8 text-muted-foreground/60">MongoDB</span>
-              <span className="mx-8 text-muted-foreground/60">Redis</span>
-              <span className="mx-8 text-muted-foreground/60">
+              <span className="mx-4 sm:mx-8 text-muted-foreground/60">
+                PostgreSQL
+              </span>
+              <span className="mx-4 sm:mx-8 text-muted-foreground/60">
+                MongoDB
+              </span>
+              <span className="mx-4 sm:mx-8 text-muted-foreground/60">
+                Redis
+              </span>
+              <span className="mx-4 sm:mx-8 text-muted-foreground/60">
                 GitHub Actions
               </span>
-              <span className="mx-8 text-muted-foreground/60">Jenkins</span>
-              <span className="mx-8 text-muted-foreground/60">Linux</span>
-              <span className="mx-8 text-muted-foreground/60">Terraform</span>
-              <span className="mx-8 text-muted-foreground/60">OpenAI</span>
+              <span className="mx-4 sm:mx-8 text-muted-foreground/60">
+                Jenkins
+              </span>
+              <span className="mx-4 sm:mx-8 text-muted-foreground/60">
+                Linux
+              </span>
+              <span className="mx-4 sm:mx-8 text-muted-foreground/60">
+                Terraform
+              </span>
+              <span className="mx-4 sm:mx-8 text-muted-foreground/60">
+                OpenAI
+              </span>
             </ScrollVelocityRow>
           </ScrollVelocityContainer>
         </div>
 
         {/* Action buttons */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-4">
-          <Link href="/portfolio">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 pt-4 w-full px-4">
+          <Link href="/portfolio" className="w-full sm:w-auto">
             <InteractiveHoverButton
               text="Continue"
-              className="w-40 border-2 hover:scale-105 transition-transform duration-200"
+              className="w-full sm:w-40 border-2 hover:scale-105 transition-transform duration-200"
             />
           </Link>
-          <Link target="_blank" href="/Adrij_resume.pdf">
-            <RainbowButton className="w-40 border-2 hover:scale-105 transition-transform duration-200">
+          <Link
+            target="_blank"
+            href="/Adrij_resume.pdf"
+            className="w-full sm:w-auto"
+          >
+            <RainbowButton className="w-full sm:w-40 border-2 hover:scale-105 transition-transform duration-200">
               Resume
             </RainbowButton>
           </Link>

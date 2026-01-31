@@ -200,7 +200,7 @@ export const Terminal = ({
     <div
       ref={containerRef}
       className={cn(
-        "border-border bg-background z-0 h-full max-h-[400px] w-full max-w-lg rounded-xl border shadow-lg",
+        "border-border bg-background z-0 h-full max-h-[400px] w-full max-w-lg rounded-xl border",
         className,
       )}
     >
@@ -212,9 +212,7 @@ export const Terminal = ({
         </div>
       </div>
       <pre className="p-4">
-        <code className="grid gap-y-1 overflow-auto max-h-[320px]">
-          {wrappedChildren}
-        </code>
+        <code className="grid gap-y-1 overflow-auto">{wrappedChildren}</code>
       </pre>
     </div>
   );
