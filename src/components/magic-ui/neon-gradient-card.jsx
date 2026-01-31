@@ -58,15 +58,26 @@ const NeonGradientCard = memo(function NeonGradientCard({
       "--pseudo-element-height": `${dimensions.height + borderSize * 2}px`,
       "--after-blur": `${dimensions.width / 3}px`,
     }),
-    [borderSize, borderRadius, neonColors.firstColor, neonColors.secondColor, dimensions.width, dimensions.height]
+    [
+      borderSize,
+      borderRadius,
+      neonColors.firstColor,
+      neonColors.secondColor,
+      dimensions.width,
+      dimensions.height,
+    ],
   );
 
   return (
     <div
       ref={containerRef}
       style={containerStyle}
-      className={cn("relative z-10 size-full rounded-[var(--border-radius)]", className)}
-      {...props}>
+      className={cn(
+        "relative z-10 size-full rounded-[var(--border-radius)]",
+        className,
+      )}
+      {...props}
+    >
       <div
         className={cn(
           "relative size-full min-h-[inherit] rounded-[var(--card-content-radius)] bg-gray-100 p-6",
@@ -78,8 +89,9 @@ const NeonGradientCard = memo(function NeonGradientCard({
           "after:h-[var(--pseudo-element-height)] after:w-[var(--pseudo-element-width)] after:rounded-[var(--border-radius)] after:blur-[var(--after-blur)] after:content-['']",
           "after:bg-[linear-gradient(0deg,var(--neon-first-color),var(--neon-second-color))] after:bg-[length:100%_200%] after:opacity-80",
           "after:animate-background-position-spin",
-          "dark:bg-neutral-900"
-        )}>
+          "dark:bg-neutral-900",
+        )}
+      >
         {children}
       </div>
     </div>

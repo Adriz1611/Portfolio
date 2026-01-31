@@ -112,7 +112,7 @@ const Skill = () => {
   // Memoize filtered skills
   const visibleSkills = useMemo(
     () => skillsData.filter((g) => g.items.length > 0),
-    []
+    [],
   );
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">

@@ -64,7 +64,8 @@ const Particles = memo(function Particles({
   const mousePosition = useThrottledMousePosition();
   const mouse = useRef({ x: 0, y: 0 });
   const canvasSize = useRef({ w: 0, h: 0 });
-  const dpr = typeof window !== "undefined" ? Math.min(window.devicePixelRatio, 2) : 1;
+  const dpr =
+    typeof window !== "undefined" ? Math.min(window.devicePixelRatio, 2) : 1;
   const rafID = useRef(null);
   const resizeTimeout = useRef();
   const rgbRef = useRef(hexToRgb(color));
@@ -191,7 +192,12 @@ const Particles = memo(function Particles({
 
   const clearContext = () => {
     if (context.current) {
-      context.current.clearRect(0, 0, canvasSize.current.w, canvasSize.current.h);
+      context.current.clearRect(
+        0,
+        0,
+        canvasSize.current.w,
+        canvasSize.current.h,
+      );
     }
   };
 
@@ -221,7 +227,9 @@ const Particles = memo(function Particles({
         canvasSize.current.h - circle.y - circle.translateY - circle.size, // distance from bottom edge
       ];
       const closestEdge = edge.reduce((a, b) => Math.min(a, b));
-      const remapClosestEdge = parseFloat(remapValue(closestEdge, 0, 20, 0, 1).toFixed(2));
+      const remapClosestEdge = parseFloat(
+        remapValue(closestEdge, 0, 20, 0, 1).toFixed(2),
+      );
       if (remapClosestEdge > 1) {
         circle.alpha += 0.02;
         if (circle.alpha > circle.targetAlpha) {
@@ -262,7 +270,8 @@ const Particles = memo(function Particles({
     <div
       className={cn("pointer-events-none", className)}
       ref={canvasContainerRef}
-      aria-hidden="true">
+      aria-hidden="true"
+    >
       <canvas ref={canvasRef} className="size-full" />
     </div>
   );

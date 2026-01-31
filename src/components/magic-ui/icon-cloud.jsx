@@ -50,10 +50,7 @@ const renderCustomIcon = (icon, theme) => {
   });
 };
 
-const IconCloud = memo(function IconCloud({
-  iconSlugs = [],
-  imageArray,
-}) {
+const IconCloud = memo(function IconCloud({ iconSlugs = [], imageArray }) {
   const [data, setData] = useState(null);
   const [mounted, setMounted] = useState(false);
   const { resolvedTheme } = useTheme();
@@ -76,7 +73,7 @@ const IconCloud = memo(function IconCloud({
     const theme = mounted ? resolvedTheme : "light";
 
     return Object.values(data.simpleIcons).map((icon) =>
-      renderCustomIcon(icon, theme || "light")
+      renderCustomIcon(icon, theme || "light"),
     );
   }, [data, resolvedTheme, mounted]);
 
@@ -96,7 +93,13 @@ const IconCloud = memo(function IconCloud({
           imageArray.length > 0 &&
           imageArray.map((image, index) => (
             <a key={index} href="#" onClick={(e) => e.preventDefault()}>
-              <img height="42" width="42" alt="Icon" src={image} loading="lazy" />
+              <img
+                height="42"
+                width="42"
+                alt="Icon"
+                src={image}
+                loading="lazy"
+              />
             </a>
           ))}
       </>

@@ -15,8 +15,11 @@ const Particles = dynamic(() => import("@/components/magic-ui/particles"), {
 });
 
 const BorderBeam = dynamic(
-  () => import("@/components/magic-ui/border-beam").then((mod) => ({ default: mod.BorderBeam })),
-  { ssr: false, loading: () => null }
+  () =>
+    import("@/components/magic-ui/border-beam").then((mod) => ({
+      default: mod.BorderBeam,
+    })),
+  { ssr: false, loading: () => null },
 );
 
 export default function Page() {
@@ -28,7 +31,7 @@ export default function Page() {
   // Memoize particle color to prevent recalculation
   const particleColor = useMemo(
     () => (mounted && resolvedTheme === "dark" ? "#ffffff" : "#000000"),
-    [mounted, resolvedTheme]
+    [mounted, resolvedTheme],
   );
 
   if (!mounted) {

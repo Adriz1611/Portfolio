@@ -17,8 +17,7 @@ import { ArrowUpRight, Sparkles, Trophy, Users, Code2 } from "lucide-react";
 // Static data moved outside component
 const experiences = [
   {
-    logoUrl:
-      "https://www.altere.in/_next/image?url=%2Fnav-log.png&w=256&q=75",
+    logoUrl: "https://www.altere.in/_next/image?url=%2Fnav-log.png&w=256&q=75",
     altText: "Altere",
     title: "Altere",
     subtitle: "Frontend Developer · Freelancing Remote",
@@ -364,12 +363,10 @@ function WorkExperiencePage() {
   // Memoize neon colors to prevent recalculation
   const neonColors = useMemo(
     () => ({
-      firstColor:
-        mounted && resolvedTheme === "dark" ? "#00FFF1" : "#0EA5E9",
-      secondColor:
-        mounted && resolvedTheme === "dark" ? "#ff00aa" : "#8B5CF6",
+      firstColor: mounted && resolvedTheme === "dark" ? "#00FFF1" : "#0EA5E9",
+      secondColor: mounted && resolvedTheme === "dark" ? "#ff00aa" : "#8B5CF6",
     }),
-    [mounted, resolvedTheme]
+    [mounted, resolvedTheme],
   );
 
   return (
@@ -392,7 +389,11 @@ function WorkExperiencePage() {
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {projects.map((project, index) => (
-              <ProjectCard key={project.title} project={project} index={index} />
+              <ProjectCard
+                key={project.title}
+                project={project}
+                index={index}
+              />
             ))}
           </div>
         </div>
@@ -417,7 +418,11 @@ function WorkExperiencePage() {
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {experiences.map((experience, index) => (
-              <ExperienceCard key={experience.title} experience={experience} index={index} />
+              <ExperienceCard
+                key={experience.title}
+                experience={experience}
+                index={index}
+              />
             ))}
           </div>
         </div>

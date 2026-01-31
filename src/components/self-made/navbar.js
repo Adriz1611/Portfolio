@@ -10,12 +10,15 @@ const Navbar = () => {
           <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold text-sm mr-3 shadow-sm hover:shadow-md transition-all duration-200 hover:scale-105">
             AB
           </div>
-          <Link href="/" className="hover:text-primary transition-colors duration-200">
+          <Link
+            href="/"
+            className="hover:text-primary transition-colors duration-200"
+          >
             Full Stack Developer
           </Link>
         </div>
         <div className="flex items-center">
-            <ThemeToggle />
+          <ThemeToggle />
         </div>
       </div>
     </div>
