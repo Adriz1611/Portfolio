@@ -26,7 +26,11 @@ export const metadata = {
   keywords:
     "Full Stack Developer, React, Next.js, Node.js, TypeScript, Cloud Computing, Portfolio",
   author: "Adrij Bhadra",
-  viewport: "width=device-width, initial-scale=1",
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#ffffff" },
     { media: "(prefers-color-scheme: dark)", color: "#000000" },
@@ -36,15 +40,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased font-sans`}
         style={{
           fontFeatureSettings: '"cv02", "cv03", "cv04", "cv11"',
           fontVariationSettings: '"opsz" auto',
         }}
+        suppressHydrationWarning
       >
         <ThemeProvider
           attribute="class"

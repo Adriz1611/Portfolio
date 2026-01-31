@@ -9,9 +9,14 @@ import {
 } from "@/components/shadcn-ui/avatar";
 import { Badge } from "@/components/shadcn-ui/badge";
 import { Card } from "@/components/shadcn-ui/card";
-import { ArrowUpRight } from "lucide-react";
+import { MagicCard } from "@/components/magic-ui/magic-card";
+import { NeonGradientCard } from "@/components/magic-ui/neon-gradient-card";
+import { BorderBeam } from "@/components/magic-ui/border-beam";
+import { useTheme } from "next-themes";
+import { ArrowUpRight, Sparkles, Trophy, Users, Code2 } from "lucide-react";
 
 export default function WorkExperiencePage() {
+  const { theme } = useTheme();
   const experiences = [
     {
       logoUrl:
@@ -20,10 +25,16 @@ export default function WorkExperiencePage() {
       title: "Altere",
       subtitle: "Frontend Developer · Freelancing Remote",
       href: "https://www.altere.in/",
-      badges: ["Next.js", "TailwindCSS", "GSAP", "SEO"],
+      badges: [
+        "Next.js",
+        "TailwindCSS",
+        "GSAP",
+        "SEO",
+        "Performance Optimization",
+      ],
       period: "Oct 2024 – Nov 2024",
       description:
-        "Developed high-performance digital platform using Next.js, improving page load speeds and SEO visibility. Designed responsive UI with Tailwind CSS, ensuring cross-device compatibility. Implemented smooth animations with GSAP, enhancing user engagement and reducing page abandonment.",
+        "Enhanced digital platform performance using Next.js with optimizations for improved loading speeds and SEO visibility. Developed responsive UI with Tailwind CSS and created engaging GSAP animations for improved user interaction and visual storytelling.",
     },
     {
       logoUrl:
@@ -32,10 +43,16 @@ export default function WorkExperiencePage() {
       title: "Changespark Foundation",
       subtitle: "Full-Stack Developer · Internship Remote",
       href: "https://changespark.in/",
-      badges: ["Next.js", "Supabase", "Responsive Design", "Admin Panel"],
+      badges: [
+        "Next.js",
+        "Supabase",
+        "Responsive Design",
+        "Admin Panel",
+        "Agile",
+      ],
       period: "Jul 2024 – Aug 2024",
       description:
-        "Developed dynamic blog system using Next.js and Supabase, enabling real-time content updates. Engineered admin panel to allow non-technical members to manage website content efficiently. Designed responsive UI, ensuring seamless experience across mobile and desktop devices.",
+        "Built dynamic blog system using Next.js and Supabase with intuitive admin panel for independent content management. Designed mobile-optimized responsive UI ensuring accessibility for diverse user base and community outreach.",
     },
   ];
 
@@ -52,11 +69,47 @@ export default function WorkExperiencePage() {
         "MongoDB",
         "Judge0",
         "PostgreSQL",
-        "AI",
+        "Whisper AI",
       ],
       period: "Jun 2025 – Present",
       description:
-        "Developed and implemented an AI-driven interview platform for tech-based hiring, enhancing candidate evaluation. Integrated Whisper-Fast AI for real-time transcription and feedback generation. Managed backend architecture with Node.js and Express.js for scalable communication between frontend and AI model. Implemented dynamic coding exercises with Judge0 API, enabling real-time performance tracking.",
+        "Developed AI-driven interview platform with automated screening, Whisper-Fast AI transcription, and real-time feedback generation for placement preparation. Built scalable Node.js backend architecture handling multiple concurrent sessions with Judge0 API integration for coding exercises. Implemented dynamic performance tracking and evaluation capabilities with comprehensive candidate assessment tools.",
+    },
+    {
+      logoUrl: "/fullstack.png",
+      altText: "CI/CD Pipeline",
+      title: "GitHub Actions Production CI/CD Pipeline",
+      subtitle: "DevOps & Cloud Infrastructure",
+      href: "#",
+      badges: [
+        "GitHub Actions",
+        "Docker",
+        "Kubernetes",
+        "AWS EKS",
+        "SonarQube",
+        "Trivy",
+      ],
+      period: "2024",
+      description:
+        "Designed comprehensive CI/CD pipeline with automated compilation, security scanning using Gitleaks/Trivy, and SonarQube quality analysis. Implemented containerized Docker Hub workflow with multi-stage building and automated Kubernetes deployment to AWS EKS. Integrated security-first approach with vulnerability scanning and quality gate validation before production deployment.",
+    },
+    {
+      logoUrl: "/fullstack.png",
+      altText: "Triage Assistant",
+      title: "Smart Symptom Log & Triage Assistant",
+      subtitle: "AI-Powered Healthcare Solution",
+      href: "#",
+      badges: [
+        "TypeScript",
+        "Node.js",
+        "PostgreSQL",
+        "Prisma",
+        "Google Gemini AI",
+        "Docker",
+      ],
+      period: "2024",
+      description:
+        "Engineered hybrid diagnostic system integrating Google Gemini AI with deterministic heuristics to extract structured JSON insights and confidence intervals for real-time medical triage. Designed scalable PostgreSQL schema using Prisma ORM to aggregate longitudinal health data, enabling detection of long-term patterns and worsening trends. Constructed multi-layered triage algorithm weighing vital signs against emergency combinations to automate urgency classification and clinical decision support.",
     },
     {
       logoUrl: "https://gameessentials.in/logo.svg",
@@ -78,7 +131,7 @@ export default function WorkExperiencePage() {
       title: "Cloud Computing and Distributed Systems",
       subtitle: "NPTEL · NPTEL25CS12S448000355",
       href: "#",
-      badges: ["Cloud Computing", "Distributed Systems"],
+      badges: ["Cloud Computing", "Distributed Systems", "Data Engineering"],
       period: "Apr 2025",
       description:
         "Comprehensive certification covering cloud computing fundamentals, distributed system architectures, and modern cloud practices.",
@@ -89,10 +142,10 @@ export default function WorkExperiencePage() {
       title: "Bootcamp on Big Data and Data Science",
       subtitle: "CDAC Noida · FSP/BCMP/C-DAC/NOI/B01/2501/1604/332745",
       href: "#",
-      badges: ["Big Data", "Data Science", "Analytics"],
+      badges: ["Big Data", "Data Science", "Analytics", "Decision Science"],
       period: "Feb 2025",
       description:
-        "Intensive bootcamp covering big data technologies, data science methodologies, and practical applications in real-world scenarios.",
+        "Intensive bootcamp covering big data technologies, data science methodologies, statistical analysis, and practical applications in real-world scenarios.",
     },
     {
       logoUrl: "/fullstack.png",
@@ -107,13 +160,100 @@ export default function WorkExperiencePage() {
     },
   ];
 
+  const achievements = [
+    {
+      logoUrl: "/fullstack.png",
+      altText: "GDG",
+      title: "Web Development Lead",
+      subtitle: "GDG Club SRMIST Delhi",
+      href: "#",
+      badges: ["Leadership", "Web Development", "Community", "Mentoring"],
+      period: "Aug 2024 – May 2025",
+      description:
+        "Leading web development initiatives and mentoring students in modern web technologies. Organizing workshops, hackathons, and technical events for the developer community.",
+    },
+  ];
+
   return (
     <>
       <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
         <div className="max-w-7xl mx-auto px-6 py-20">
           <div className="text-center mb-16 animate-fade-in-up">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/5 border border-primary/10 mb-6">
-              <span className="text-2xl">💼</span>
+              <span className="text-2xl">�</span>
+              <span className="text-sm font-medium text-muted-foreground">
+                Featured Work
+              </span>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-gradient mb-4">
+              Projects
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Innovative solutions crafted with cutting-edge technologies
+            </p>
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {projects.map((project, index) => (
+              <div
+                key={index}
+                className="group animate-fade-in-up"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <Card className="h-full border border-border/50 bg-card/30 backdrop-blur-sm hover:bg-card/50 transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/10 overflow-hidden">
+                  <div className="p-8">
+                    <div className="mb-6">
+                      <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors duration-300 mb-2">
+                        {project.title}
+                      </h3>
+                      <p className="text-muted-foreground font-medium">
+                        {project.subtitle}
+                      </p>
+                    </div>
+
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      {project.badges.map((badge, index) => (
+                        <Badge
+                          key={index}
+                          variant="secondary"
+                          className="bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20 hover:bg-blue-500/20 transition-colors duration-200 text-xs font-medium px-3 py-1"
+                        >
+                          {badge}
+                        </Badge>
+                      ))}
+                    </div>
+
+                    <p className="text-muted-foreground leading-relaxed mb-6 text-sm">
+                      {project.description}
+                    </p>
+
+                    <div className="flex justify-end">
+                      <Link
+                        href={project.href}
+                        target="_blank"
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-500/5 hover:bg-blue-500/10 border border-blue-500/20 hover:border-blue-500/30 transition-all duration-200 group/link"
+                      >
+                        <span className="text-sm font-medium text-blue-600 dark:text-blue-400">
+                          View Project
+                        </span>
+                        <ArrowUpRight
+                          size={16}
+                          className="text-blue-600 dark:text-blue-400 group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform duration-200"
+                        />
+                      </Link>
+                    </div>
+                  </div>
+                </Card>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="min-h-screen bg-gradient-to-br from-muted/20 via-background to-background">
+        <div className="max-w-7xl mx-auto px-6 py-20">
+          <div className="text-center mb-16 animate-fade-in-up">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/5 border border-primary/10 mb-6">
+              <span className="text-2xl">�</span>
               <span className="text-sm font-medium text-muted-foreground">
                 Professional Journey
               </span>
@@ -147,7 +287,6 @@ export default function WorkExperiencePage() {
                             {experience.altText[0]}
                           </AvatarFallback>
                         </Avatar>
-                        <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-green-500 rounded-full border-2 border-background"></div>
                       </div>
                       <div className="flex-grow min-w-0">
                         <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors duration-300 mb-1">
@@ -193,100 +332,6 @@ export default function WorkExperiencePage() {
                         <ArrowUpRight
                           size={16}
                           className="text-primary group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform duration-200"
-                        />
-                      </Link>
-                    </div>
-                  </div>
-                </Card>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      <div className="min-h-screen bg-gradient-to-br from-muted/20 via-background to-background">
-        <div className="max-w-7xl mx-auto px-6 py-20">
-          <div className="text-center mb-16 animate-fade-in-up">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/5 border border-primary/10 mb-6">
-              <span className="text-2xl">🚀</span>
-              <span className="text-sm font-medium text-muted-foreground">
-                Featured Work
-              </span>
-            </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-gradient mb-4">
-              Projects
-            </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Innovative solutions crafted with cutting-edge technologies
-            </p>
-          </div>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {projects.map((project, index) => (
-              <div
-                key={index}
-                className="group animate-fade-in-up"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <Card className="h-full border border-border/50 bg-card/30 backdrop-blur-sm hover:bg-card/50 transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/10 overflow-hidden">
-                  <div className="p-8">
-                    <div className="flex items-start gap-6 mb-6">
-                      <div className="relative">
-                        <Avatar className="size-16 border-2 border-border/50 bg-background/50 backdrop-blur-sm shadow-lg">
-                          <AvatarImage
-                            src={project.logoUrl}
-                            alt={project.altText}
-                            className="object-contain p-2"
-                          />
-                          <AvatarFallback className="text-lg font-semibold text-primary">
-                            {project.altText[0]}
-                          </AvatarFallback>
-                        </Avatar>
-                        <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-blue-500 rounded-full border-2 border-background"></div>
-                      </div>
-                      <div className="flex-grow min-w-0">
-                        <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors duration-300 mb-1">
-                          {project.title}
-                        </h3>
-                        <p className="text-muted-foreground font-medium mb-2">
-                          {project.subtitle}
-                        </p>
-                        <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                          <span className="inline-flex items-center gap-1">
-                            <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                            {project.period}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="flex flex-wrap gap-2 mb-6">
-                      {project.badges.map((badge, index) => (
-                        <Badge
-                          key={index}
-                          variant="secondary"
-                          className="bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20 hover:bg-blue-500/20 transition-colors duration-200 text-xs font-medium px-3 py-1"
-                        >
-                          {badge}
-                        </Badge>
-                      ))}
-                    </div>
-
-                    <p className="text-muted-foreground leading-relaxed mb-6 text-sm">
-                      {project.description}
-                    </p>
-
-                    <div className="flex justify-end">
-                      <Link
-                        href={project.href}
-                        target="_blank"
-                        className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-500/5 hover:bg-blue-500/10 border border-blue-500/20 hover:border-blue-500/30 transition-all duration-200 group/link"
-                      >
-                        <span className="text-sm font-medium text-blue-600 dark:text-blue-400">
-                          View Project
-                        </span>
-                        <ArrowUpRight
-                          size={16}
-                          className="text-blue-600 dark:text-blue-400 group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform duration-200"
                         />
                       </Link>
                     </div>
@@ -372,6 +417,142 @@ export default function WorkExperiencePage() {
                 </Card>
               </div>
             ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="relative py-24 overflow-hidden">
+        {/* Animated background elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-1/4 -left-20 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl animate-pulse" />
+          <div
+            className="absolute bottom-1/4 -right-20 w-72 h-72 bg-cyan-500/10 rounded-full blur-3xl animate-pulse"
+            style={{ animationDelay: "1s" }}
+          />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl" />
+        </div>
+
+        <div className="relative max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16 animate-fade-in-up">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/5 border border-primary/10 mb-6">
+              <Trophy className="w-5 h-5 text-primary" />
+              <span className="text-sm font-medium text-muted-foreground">
+                Achievement
+              </span>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              Leadership & Recognition
+            </h2>
+          </div>
+
+          {/* Featured Leadership Card */}
+          <div className="flex justify-center animate-fade-in-up">
+            <NeonGradientCard
+              className="w-full max-w-6xl"
+              borderRadius={24}
+              borderSize={3}
+              neonColors={{
+                firstColor: theme === "dark" ? "#00FFF1" : "#0EA5E9",
+                secondColor: theme === "dark" ? "#ff00aa" : "#8B5CF6",
+              }}
+            >
+              <div className="relative flex flex-col lg:flex-row min-h-[380px] overflow-hidden rounded-[21px]">
+                {/* Image Section - Large and Immersive */}
+                <div className="relative w-full lg:w-1/2 min-h-[240px] lg:min-h-full overflow-hidden group">
+                  {/* Gradient overlays for depth */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10 lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-black/40" />
+                  <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-transparent z-10" />
+
+                  {/* Main Image */}
+                  <img
+                    src="/adriz.png"
+                    alt="Adrij Bhadra - Web Development Lead at GDG"
+                    className="w-full h-full object-cover object-center transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
+                  />
+
+                  {/* Floating badge on image */}
+                  <div className="absolute bottom-4 left-4 z-20 lg:hidden">
+                    <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-xl border border-white/20">
+                      <Sparkles className="w-4 h-4 text-cyan-400" />
+                      <span className="text-white font-semibold text-sm">
+                        Lead Developer
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Content Section */}
+                <div className="relative w-full lg:w-1/2 p-5 md:p-7 lg:p-8 flex flex-col justify-center">
+                  <div className="space-y-4">
+                    {/* Title Section */}
+                    <div>
+                      <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 leading-tight">
+                        Web Development
+                        <span className="block bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent">
+                          Lead
+                        </span>
+                      </h3>
+                      <p className="text-xl md:text-2xl text-muted-foreground font-medium">
+                        GDG Club SRMIST Delhi
+                      </p>
+                    </div>
+
+                    {/* Timeline */}
+                    <div className="flex items-center gap-3">
+                      <div className="flex items-center justify-center w-10 h-10 rounded-full bg-primary/10 border border-primary/20">
+                        <span className="text-lg">📅</span>
+                      </div>
+                      <div>
+                        <p className="text-sm text-muted-foreground">
+                          Duration
+                        </p>
+                        <p className="text-lg font-semibold text-foreground">
+                          Aug 2024 – May 2025
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Skills/Tags with icons */}
+                    <div className="flex flex-wrap gap-2">
+                      {[
+                        { label: "Leadership", icon: Trophy },
+                        { label: "Web Dev", icon: Code2 },
+                        { label: "Community", icon: Users },
+                        { label: "Mentoring", icon: Sparkles },
+                      ].map((item, index) => (
+                        <div
+                          key={index}
+                          className="flex items-center gap-2 px-4 py-2 rounded-full bg-primary/5 border border-primary/10 hover:bg-primary/10 hover:border-primary/20 transition-all duration-300 cursor-default group/badge"
+                        >
+                          <item.icon className="w-4 h-4 text-primary group-hover/badge:scale-110 transition-transform" />
+                          <span className="text-sm font-medium text-foreground">
+                            {item.label}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Description */}
+                    <p className="text-muted-foreground leading-relaxed text-base lg:text-lg">
+                      Leading web development initiatives and mentoring students
+                      in modern web technologies. Organizing workshops,
+                      hackathons, and technical events for the developer
+                      community.
+                    </p>
+
+                    {/* Stats row */}
+                    <div className="flex justify-center pt-4 border-t border-border/50">
+                      <div className="text-center">
+                        <p className="text-2xl font-bold text-foreground">5+</p>
+                        <p className="text-xs text-muted-foreground">
+                          Events Organized
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </NeonGradientCard>
           </div>
         </div>
       </div>

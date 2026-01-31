@@ -54,7 +54,7 @@ export default function Page() {
               className="w-40 border-2 hover:scale-105 transition-transform duration-200"
             />
           </Link>
-          <Link target="_blank" href="/Adrijresume.pdf">
+          <Link target="_blank" href="/Adrij_resume.pdf">
             <RainbowButton className="w-40 border-2 hover:scale-105 transition-transform duration-200">
               Resume
             </RainbowButton>

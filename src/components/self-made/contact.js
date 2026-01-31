@@ -52,7 +52,7 @@ const Contact = () => {
                 </Link>
 
                 <Link
-                  href="mailto:adrij.bhadra@example.com"
+                  href="mailto:adrijbhadra@gmail.com"
                   className="group inline-flex items-center justify-center gap-3 px-8 py-3 rounded-xl bg-foreground hover:bg-foreground/90 text-background transition-all duration-200 min-w-[160px] font-medium"
                 >
                   <div className="w-5 h-5">

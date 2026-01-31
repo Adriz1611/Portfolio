@@ -5,10 +5,10 @@ import IconCloud from "../magic-ui/icon-cloud";
 const skillsData = [
   {
     title: "Programming Languages",
-    items: ["C/C++", "Java", "JavaScript", "TypeScript", "Python"],
+    items: ["JavaScript", "TypeScript", "Python", "C/C++"],
   },
   {
-    title: "Languages & Frameworks",
+    title: "Web Technologies & Frameworks",
     items: [
       "Next.js",
       "React",
@@ -20,33 +20,36 @@ const skillsData = [
     ],
   },
   {
-    title: "Areas of Interest",
-    items: ["Full Stack Development", "Cloud Computing", "Data Science"],
-  },
-  { title: "Design & Simulation Tools", items: ["Figma"] },
-  {
-    title: "Tools & Technologies",
+    title: "Cloud & DevOps",
     items: [
-      "Git",
-      "GitHub",
-      "Postman",
-      "WebStorm",
-      "IntelliJ",
-      "VScode",
+      "AWS (EC2, RDS, S3)",
+      "Azure",
+      "GCP",
       "Docker",
       "Kubernetes",
       "CI/CD",
     ],
   },
-  { title: "Technical Skills", items: [] },
+  {
+    title: "Tools & Technologies",
+    items: ["Git", "GitHub", "Postman", "WebStorm", "IntelliJ", "VScode"],
+  },
   { title: "Databases", items: ["MongoDB", "PostgreSQL", "MySQL"] },
-  { title: "Operating Systems", items: ["Ubuntu", "Fedora", "Windows"] },
+  { title: "Operating Systems", items: ["Ubuntu", "Fedora", "Linux"] },
+  {
+    title: "Areas of Interest",
+    items: [
+      "Full Stack Development",
+      "Cloud Computing",
+      "Data Science",
+      "Machine Learning",
+    ],
+  },
 ];
 
 const slugs = [
   "typescript",
   "javascript",
-  "java",
   "python",
   "cplusplus",
   "react",
@@ -66,11 +69,12 @@ const slugs = [
   "postman",
   "visualstudiocode",
   "intellijidea",
-  "figma",
   "tailwindcss",
   "ubuntu",
   "fedora",
-  "windows",
+  "amazonwebservices",
+  "googlecloud",
+  "microsoftazure",
 ];
 
 const Skill = () => {
@@ -103,11 +107,12 @@ const Skill = () => {
               <p className="text-lg leading-8 text-foreground/80">
                 Currently in my{" "}
                 <span className="font-semibold text-foreground">
-                  4th year of B.Tech in Computer Science
+                  4th year of B.Tech in Computer Science and Business Systems
                 </span>{" "}
-                at New Delhi, India. I'm passionate about creating solutions
-                that solve real-world problems and building tools that make a
-                difference.
+                at SRM Institute of Science and Technology, New Delhi. I'm
+                passionate about creating solutions that solve real-world
+                problems and building tools that make a difference. Maintaining
+                a CGPA of 8.89/10.
               </p>
               <p className="text-lg leading-8 text-foreground/80">
                 My expertise spans across{" "}
@@ -117,7 +122,7 @@ const Skill = () => {
                 ,
                 <span className="font-semibold text-foreground">
                   {" "}
-                  Cloud Computing
+                  Cloud Computing & DevOps
                 </span>
                 , and
                 <span className="font-semibold text-foreground">
@@ -125,7 +130,8 @@ const Skill = () => {
                   Data Science
                 </span>
                 . I specialize in building scalable applications using modern
-                technologies like Next.js, React, and various cloud platforms.
+                technologies like Next.js, React, and cloud platforms including
+                AWS, Azure, and GCP.
               </p>
               <p className="text-lg leading-8 text-foreground/80">
                 I'm proficient with containerization technologies like{" "}
@@ -157,7 +163,7 @@ const Skill = () => {
           <div className="text-center mb-14">
             <h2
               id="skills-heading"
-              className="text-5xl md:text-6xl font-bold tracking-tight text-white"
+              className="text-5xl md:text-6xl font-bold tracking-tight text-foreground"
             >
               Skills
             </h2>
@@ -171,15 +177,15 @@ const Skill = () => {
               return (
                 <div
                   key={group.title}
-                  className={`rounded-xl border border-white/10 bg-white/[0.025] p-6 flex flex-col gap-3 hover:border-white/25 transition-colors
+                  className={`rounded-xl border border-border/50 bg-card/30 backdrop-blur-sm p-6 flex flex-col gap-3 hover:border-border hover:bg-card/50 transition-colors
           ${isLastSingle ? "lg:col-start-2" : ""} 
         `}
                   style={{ animationDelay: `${idx * 60}ms` }}
                 >
-                  <h3 className="text-base md:text-lg font-semibold text-white tracking-wide text-center">
+                  <h3 className="text-base md:text-lg font-semibold text-foreground tracking-wide text-center">
                     {group.title}
                   </h3>
-                  <p className="text-xs md:text-sm text-neutral-400 text-center leading-relaxed">
+                  <p className="text-xs md:text-sm text-muted-foreground text-center leading-relaxed">
                     {group.items.join(", ")}
                   </p>
                 </div>

@@ -1,4 +1,4 @@
-"use client";;
+"use client";
 import { useEffect, useMemo, useState } from "react";
 import { useTheme } from "next-themes";
 import { Cloud, fetchSimpleIcons, renderSimpleIcon } from "react-icon-cloud";
@@ -30,11 +30,7 @@ export const cloudProps = {
   },
 };
 
-export const renderCustomIcon = (
-  icon,
-  theme,
-  imageArray,
-) => {
+export const renderCustomIcon = (icon, theme, imageArray) => {
   const bgHex = theme === "light" ? "#f3f2ef" : "#080510";
   const fallbackHex = theme === "light" ? "#6e6e73" : "#ffffff";
   const minContrastRatio = theme === "dark" ? 2 : 1.2;
@@ -58,10 +54,15 @@ export default function IconCloud({
   // Default to an empty array if not provided
   iconSlugs = [],
 
-  imageArray
+  imageArray,
 }) {
   const [data, setData] = useState(null);
+  const [mounted, setMounted] = useState(false);
   const { theme } = useTheme();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     if (iconSlugs.length > 0) {
@@ -74,24 +75,27 @@ export default function IconCloud({
     if (!data) return null;
 
     return Object.values(data.simpleIcons).map((icon) =>
-      renderCustomIcon(icon, theme || "light"));
+      renderCustomIcon(icon, theme || "light"),
+    );
   }, [data, theme]);
+
+  if (!mounted) return null;
 
   return (
     // @ts-ignore
-    (<Cloud {...cloudProps}>
+    <Cloud {...cloudProps}>
       <>
         <>{renderedIcons}</>
         {imageArray &&
           imageArray.length > 0 &&
           imageArray.map((image, index) => {
             return (
-              (<a key={index} href="#" onClick={(e) => e.preventDefault()}>
+              <a key={index} href="#" onClick={(e) => e.preventDefault()}>
                 <img height="42" width="42" alt="A globe" src={image} />
-              </a>)
+              </a>
             );
           })}
       </>
-    </Cloud>)
+    </Cloud>
   );
 }
