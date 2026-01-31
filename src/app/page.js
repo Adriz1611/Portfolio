@@ -1,31 +1,56 @@
 "use client";
 
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
-import Particles from "@/components/magic-ui/particles";
+import { useEffect, useState, useMemo, lazy, Suspense } from "react";
+import dynamic from "next/dynamic";
 import WordPullUp from "@/components/magic-ui/word-pull-up";
 import InteractiveHoverButton from "@/components/magic-ui/interactive-hover-button";
-import { BorderBeam } from "@/components/magic-ui/border-beam";
 import { RainbowButton } from "@/components/magic-ui/rainbow-button";
 import Link from "next/link";
 
+// Lazy load heavy components
+const Particles = dynamic(() => import("@/components/magic-ui/particles"), {
+  ssr: false,
+  loading: () => null,
+});
+
+const BorderBeam = dynamic(
+  () => import("@/components/magic-ui/border-beam").then((mod) => ({ default: mod.BorderBeam })),
+  { ssr: false, loading: () => null }
+);
+
 export default function Page() {
-  const { theme, resolvedTheme } = useTheme();
+  const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => setMounted(true), []);
 
-  if (!mounted) return null;
+  // Memoize particle color to prevent recalculation
+  const particleColor = useMemo(
+    () => (mounted && resolvedTheme === "dark" ? "#ffffff" : "#000000"),
+    [mounted, resolvedTheme]
+  );
 
-  const particleColor = resolvedTheme === "dark" ? "#ffffff" : "#000000";
+  if (!mounted) {
+    // Return minimal skeleton to prevent layout shift
+    return (
+      <main className="relative flex flex-col items-center justify-center min-h-screen min-w-full bg-background overflow-hidden">
+        <div className="relative z-10 flex flex-col items-center justify-center gap-8 max-w-4xl mx-auto px-6 text-center">
+          <div className="space-y-6">
+            <div className="h-16 w-64 bg-muted/20 rounded animate-pulse mx-auto" />
+            <div className="h-6 w-96 bg-muted/20 rounded animate-pulse mx-auto" />
+          </div>
+        </div>
+      </main>
+    );
+  }
 
   return (
     <main className="relative flex flex-col items-center justify-center min-h-screen min-w-full bg-background overflow-hidden">
       <Particles
         className="absolute inset-0 z-0"
-        quantity={200}
+        quantity={150}
         ease={80}
-        refresh
         color={particleColor}
       />
 

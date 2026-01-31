@@ -1,6 +1,5 @@
 import React from "react";
 import ThemeToggle from "./themetoggle";
-import { AppWindow } from "lucide-react";
 import Link from "next/link";
 
 const Navbar = () => {

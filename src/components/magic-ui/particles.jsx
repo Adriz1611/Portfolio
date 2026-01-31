@@ -1,24 +1,31 @@
-"use client";;
-import { cn } from "@/lib/utils";
-import React, { useEffect, useRef, useState } from "react";
+"use client";
 
-function MousePosition() {
+import { cn } from "@/lib/utils";
+import React, { useEffect, useRef, useState, memo, useCallback } from "react";
+
+// Throttle mouse updates for better performance
+function useThrottledMousePosition(delay = 16) {
   const [mousePosition, setMousePosition] = useState({
     x: 0,
     y: 0,
   });
+  const lastUpdate = useRef(0);
 
   useEffect(() => {
     const handleMouseMove = (event) => {
-      setMousePosition({ x: event.clientX, y: event.clientY });
+      const now = Date.now();
+      if (now - lastUpdate.current >= delay) {
+        lastUpdate.current = now;
+        setMousePosition({ x: event.clientX, y: event.clientY });
+      }
     };
 
-    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
     };
-  }, []);
+  }, [delay]);
 
   return mousePosition;
 }
@@ -40,27 +47,32 @@ function hexToRgb(hex) {
   return [red, green, blue];
 }
 
-const Particles = ({
+const Particles = memo(function Particles({
   className = "",
   quantity = 100,
   staticity = 50,
   ease = 50,
   size = 0.4,
-  refresh = false,
   color = "#ffffff",
   vx = 0,
   vy = 0,
-}) => {
+}) {
   const canvasRef = useRef(null);
   const canvasContainerRef = useRef(null);
   const context = useRef(null);
   const circles = useRef([]);
-  const mousePosition = MousePosition();
+  const mousePosition = useThrottledMousePosition();
   const mouse = useRef({ x: 0, y: 0 });
   const canvasSize = useRef({ w: 0, h: 0 });
-  const dpr = typeof window !== "undefined" ? window.devicePixelRatio : 1;
+  const dpr = typeof window !== "undefined" ? Math.min(window.devicePixelRatio, 2) : 1;
   const rafID = useRef(null);
   const resizeTimeout = useRef();
+  const rgbRef = useRef(hexToRgb(color));
+
+  // Update RGB when color changes
+  useEffect(() => {
+    rgbRef.current = hexToRgb(color);
+  }, [color]);
 
   useEffect(() => {
     if (canvasRef.current) {
@@ -78,7 +90,7 @@ const Particles = ({
       }, 200);
     };
 
-    window.addEventListener("resize", handleResize);
+    window.addEventListener("resize", handleResize, { passive: true });
 
     return () => {
       if (rafID.current != null) {
@@ -89,15 +101,11 @@ const Particles = ({
       }
       window.removeEventListener("resize", handleResize);
     };
-  }, [color]);
+  }, []);
 
   useEffect(() => {
     onMouseMove();
   }, [mousePosition.x, mousePosition.y]);
-
-  useEffect(() => {
-    initCanvas();
-  }, [refresh]);
 
   const initCanvas = () => {
     resizeCanvas();
@@ -163,7 +171,7 @@ const Particles = ({
     };
   };
 
-  const rgb = hexToRgb(color);
+  const rgb = rgbRef.current;
 
   const drawCircle = (circle, update = false) => {
     if (context.current) {
@@ -251,13 +259,13 @@ const Particles = ({
   };
 
   return (
-    (<div
+    <div
       className={cn("pointer-events-none", className)}
       ref={canvasContainerRef}
       aria-hidden="true">
       <canvas ref={canvasRef} className="size-full" />
-    </div>)
+    </div>
   );
-};
+});
 
 export default Particles;

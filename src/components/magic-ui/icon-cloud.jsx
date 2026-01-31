@@ -1,5 +1,6 @@
 "use client";
-import { useEffect, useMemo, useState } from "react";
+
+import { useEffect, useMemo, useState, memo, useCallback } from "react";
 import { useTheme } from "next-themes";
 import { Cloud, fetchSimpleIcons, renderSimpleIcon } from "react-icon-cloud";
 
@@ -26,11 +27,10 @@ export const cloudProps = {
     outlineColour: "#0000",
     maxSpeed: 0.04,
     minSpeed: 0.02,
-    // dragControl: false,
   },
 };
 
-export const renderCustomIcon = (icon, theme, imageArray) => {
+const renderCustomIcon = (icon, theme) => {
   const bgHex = theme === "light" ? "#f3f2ef" : "#080510";
   const fallbackHex = theme === "light" ? "#6e6e73" : "#ffffff";
   const minContrastRatio = theme === "dark" ? 2 : 1.2;
@@ -50,52 +50,58 @@ export const renderCustomIcon = (icon, theme, imageArray) => {
   });
 };
 
-export default function IconCloud({
-  // Default to an empty array if not provided
+const IconCloud = memo(function IconCloud({
   iconSlugs = [],
-
   imageArray,
 }) {
   const [data, setData] = useState(null);
   const [mounted, setMounted] = useState(false);
-  const { theme } = useTheme();
+  const { resolvedTheme } = useTheme();
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
+  // Memoize slugs to prevent unnecessary refetches
+  const slugsKey = useMemo(() => iconSlugs.join(","), [iconSlugs]);
+
   useEffect(() => {
     if (iconSlugs.length > 0) {
-      // Check if iconSlugs is not empty
       fetchSimpleIcons({ slugs: iconSlugs }).then(setData);
     }
-  }, [iconSlugs]);
+  }, [slugsKey]);
 
   const renderedIcons = useMemo(() => {
     if (!data) return null;
+    const theme = mounted ? resolvedTheme : "light";
 
     return Object.values(data.simpleIcons).map((icon) =>
-      renderCustomIcon(icon, theme || "light"),
+      renderCustomIcon(icon, theme || "light")
     );
-  }, [data, theme]);
+  }, [data, resolvedTheme, mounted]);
 
-  if (!mounted) return null;
+  if (!mounted) {
+    return (
+      <div className="w-full h-64 flex items-center justify-center">
+        <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+      </div>
+    );
+  }
 
   return (
-    // @ts-ignore
     <Cloud {...cloudProps}>
       <>
-        <>{renderedIcons}</>
+        {renderedIcons}
         {imageArray &&
           imageArray.length > 0 &&
-          imageArray.map((image, index) => {
-            return (
-              <a key={index} href="#" onClick={(e) => e.preventDefault()}>
-                <img height="42" width="42" alt="A globe" src={image} />
-              </a>
-            );
-          })}
+          imageArray.map((image, index) => (
+            <a key={index} href="#" onClick={(e) => e.preventDefault()}>
+              <img height="42" width="42" alt="Icon" src={image} loading="lazy" />
+            </a>
+          ))}
       </>
     </Cloud>
   );
-}
+});
+
+export default IconCloud;

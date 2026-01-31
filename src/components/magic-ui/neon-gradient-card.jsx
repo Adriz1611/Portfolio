@@ -1,9 +1,10 @@
-"use client";;
-import { useEffect, useRef, useState } from "react";
+"use client";
+
+import { useEffect, useRef, useState, useMemo, useCallback, memo } from "react";
 
 import { cn } from "@/lib/utils";
 
-const NeonGradientCard = ({
+const NeonGradientCard = memo(function NeonGradientCard({
   className,
   children,
   borderSize = 2,
@@ -13,51 +14,57 @@ const NeonGradientCard = ({
     secondColor: "#00FFF1",
   },
   ...props
-}) => {
+}) {
   const containerRef = useRef(null);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
 
-  useEffect(() => {
-    const updateDimensions = () => {
-      if (containerRef.current) {
-        const { offsetWidth, offsetHeight } = containerRef.current;
-        setDimensions({ width: offsetWidth, height: offsetHeight });
-      }
-    };
+  const updateDimensions = useCallback(() => {
+    if (containerRef.current) {
+      const { offsetWidth, offsetHeight } = containerRef.current;
+      setDimensions((prev) => {
+        if (prev.width === offsetWidth && prev.height === offsetHeight) {
+          return prev;
+        }
+        return { width: offsetWidth, height: offsetHeight };
+      });
+    }
+  }, []);
 
+  useEffect(() => {
     updateDimensions();
     window.addEventListener("resize", updateDimensions);
 
     return () => {
       window.removeEventListener("resize", updateDimensions);
     };
-  }, []);
+  }, [updateDimensions]);
 
   useEffect(() => {
-    if (containerRef.current) {
-      const { offsetWidth, offsetHeight } = containerRef.current;
-      setDimensions({ width: offsetWidth, height: offsetHeight });
-    }
-  }, [children]);
+    updateDimensions();
+  }, [children, updateDimensions]);
+
+  // Memoize styles to prevent recalculation
+  const containerStyle = useMemo(
+    () => ({
+      "--border-size": `${borderSize}px`,
+      "--border-radius": `${borderRadius}px`,
+      "--neon-first-color": neonColors.firstColor,
+      "--neon-second-color": neonColors.secondColor,
+      "--card-width": `${dimensions.width}px`,
+      "--card-height": `${dimensions.height}px`,
+      "--card-content-radius": `${borderRadius - borderSize}px`,
+      "--pseudo-element-background-image": `linear-gradient(0deg, ${neonColors.firstColor}, ${neonColors.secondColor})`,
+      "--pseudo-element-width": `${dimensions.width + borderSize * 2}px`,
+      "--pseudo-element-height": `${dimensions.height + borderSize * 2}px`,
+      "--after-blur": `${dimensions.width / 3}px`,
+    }),
+    [borderSize, borderRadius, neonColors.firstColor, neonColors.secondColor, dimensions.width, dimensions.height]
+  );
 
   return (
-    (<div
+    <div
       ref={containerRef}
-      style={
-        {
-          "--border-size": `${borderSize}px`,
-          "--border-radius": `${borderRadius}px`,
-          "--neon-first-color": neonColors.firstColor,
-          "--neon-second-color": neonColors.secondColor,
-          "--card-width": `${dimensions.width}px`,
-          "--card-height": `${dimensions.height}px`,
-          "--card-content-radius": `${borderRadius - borderSize}px`,
-          "--pseudo-element-background-image": `linear-gradient(0deg, ${neonColors.firstColor}, ${neonColors.secondColor})`,
-          "--pseudo-element-width": `${dimensions.width + borderSize * 2}px`,
-          "--pseudo-element-height": `${dimensions.height + borderSize * 2}px`,
-          "--after-blur": `${dimensions.width / 3}px`
-        }
-      }
+      style={containerStyle}
       className={cn("relative z-10 size-full rounded-[var(--border-radius)]", className)}
       {...props}>
       <div
@@ -75,8 +82,8 @@ const NeonGradientCard = ({
         )}>
         {children}
       </div>
-    </div>)
+    </div>
   );
-};
+});
 
 export { NeonGradientCard };

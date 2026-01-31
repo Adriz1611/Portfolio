@@ -1,7 +1,19 @@
-import React from "react";
-import IconCloud from "../magic-ui/icon-cloud";
+"use client";
 
-// User-specified categories only
+import React, { memo, useMemo } from "react";
+import dynamic from "next/dynamic";
+
+// Lazy load heavy icon cloud component
+const IconCloud = dynamic(() => import("../magic-ui/icon-cloud"), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full h-64 flex items-center justify-center">
+      <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+    </div>
+  ),
+});
+
+// Static data moved outside component to prevent recreation
 const skillsData = [
   {
     title: "Programming Languages",
@@ -77,9 +89,31 @@ const slugs = [
   "microsoftazure",
 ];
 
+// Memoized skill card component
+const SkillCard = memo(function SkillCard({ group, idx, isLastSingle }) {
+  return (
+    <div
+      className={`rounded-xl border border-border/50 bg-card/30 backdrop-blur-sm p-6 flex flex-col gap-3 hover:border-border hover:bg-card/50 transition-colors
+        ${isLastSingle ? "lg:col-start-2" : ""} 
+      `}
+      style={{ animationDelay: `${idx * 60}ms` }}
+    >
+      <h3 className="text-base md:text-lg font-semibold text-foreground tracking-wide text-center">
+        {group.title}
+      </h3>
+      <p className="text-xs md:text-sm text-muted-foreground text-center leading-relaxed">
+        {group.items.join(", ")}
+      </p>
+    </div>
+  );
+});
+
 const Skill = () => {
-  // Filter out empty categories once
-  const visibleSkills = skillsData.filter((g) => g.items.length > 0);
+  // Memoize filtered skills
+  const visibleSkills = useMemo(
+    () => skillsData.filter((g) => g.items.length > 0),
+    []
+  );
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
       <div className="max-w-7xl mx-auto px-6 py-20">
@@ -175,20 +209,12 @@ const Skill = () => {
                 idx === visibleSkills.length - 1;
 
               return (
-                <div
+                <SkillCard
                   key={group.title}
-                  className={`rounded-xl border border-border/50 bg-card/30 backdrop-blur-sm p-6 flex flex-col gap-3 hover:border-border hover:bg-card/50 transition-colors
-          ${isLastSingle ? "lg:col-start-2" : ""} 
-        `}
-                  style={{ animationDelay: `${idx * 60}ms` }}
-                >
-                  <h3 className="text-base md:text-lg font-semibold text-foreground tracking-wide text-center">
-                    {group.title}
-                  </h3>
-                  <p className="text-xs md:text-sm text-muted-foreground text-center leading-relaxed">
-                    {group.items.join(", ")}
-                  </p>
-                </div>
+                  group={group}
+                  idx={idx}
+                  isLastSingle={isLastSingle}
+                />
               );
             })}
           </div>
@@ -198,4 +224,4 @@ const Skill = () => {
   );
 };
 
-export default Skill;
+export default memo(Skill);
