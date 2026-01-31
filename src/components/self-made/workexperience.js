@@ -371,9 +371,9 @@ function WorkExperiencePage() {
 
   return (
     <>
-      <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
-        <div className="max-w-7xl mx-auto px-6 py-20">
-          <div className="text-center mb-16 animate-fade-in-up">
+      <div className="bg-gradient-to-br from-background via-background to-muted/20">
+        <div className="max-w-7xl mx-auto px-6 py-12">
+          <div className="text-center mb-10 animate-fade-in-up">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/5 border border-primary/10 mb-6">
               <span className="text-2xl">🚀</span>
               <span className="text-sm font-medium text-muted-foreground">
@@ -399,9 +399,9 @@ function WorkExperiencePage() {
         </div>
       </div>
 
-      <div className="min-h-screen bg-gradient-to-br from-muted/20 via-background to-background">
-        <div className="max-w-7xl mx-auto px-6 py-20">
-          <div className="text-center mb-16 animate-fade-in-up">
+      <div className="bg-gradient-to-br from-muted/20 via-background to-background">
+        <div className="max-w-7xl mx-auto px-6 py-12">
+          <div className="text-center mb-10 animate-fade-in-up">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/5 border border-primary/10 mb-6">
               <span className="text-2xl">💼</span>
               <span className="text-sm font-medium text-muted-foreground">
@@ -428,7 +428,7 @@ function WorkExperiencePage() {
         </div>
       </div>
 
-      <div className="bg-gradient-to-br from-background via-muted/10 to-background py-20">
+      <div className="bg-gradient-to-br from-background via-muted/10 to-background py-12">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-12 animate-fade-in-up">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/5 border border-primary/10 mb-6">
@@ -452,7 +452,7 @@ function WorkExperiencePage() {
         </div>
       </div>
 
-      <div className="relative py-24 overflow-hidden">
+      <div className="relative py-12 overflow-hidden">
         {/* Animated background elements */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-1/4 -left-20 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl animate-pulse" />
@@ -464,7 +464,7 @@ function WorkExperiencePage() {
         </div>
 
         <div className="relative max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16 animate-fade-in-up">
+          <div className="text-center mb-10 animate-fade-in-up">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/5 border border-primary/10 mb-6">
               <Trophy className="w-5 h-5 text-primary" />
               <span className="text-sm font-medium text-muted-foreground">

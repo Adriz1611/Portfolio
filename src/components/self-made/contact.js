@@ -5,8 +5,8 @@ import Link from "next/link";
 
 const Contact = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-muted/10 to-background flex items-center justify-center">
-      <div className="max-w-4xl mx-auto px-6 py-20">
+    <div className="min-h-fit bg-gradient-to-br from-background via-muted/10 to-background flex items-center justify-center">
+      <div className="max-w-4xl mx-auto px-6 py-12">
         <BlurFade>
           <div className="text-center mb-16 animate-fade-in-up">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/5 border border-primary/10 mb-6">

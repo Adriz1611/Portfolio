@@ -108,34 +108,38 @@ const SkillCard = memo(function SkillCard({ group, idx, isLastSingle }) {
   );
 });
 
-const Skill = () => {
+const Skill = ({ showTitle = true, transparent = false }) => {
   // Memoize filtered skills
   const visibleSkills = useMemo(
     () => skillsData.filter((g) => g.items.length > 0),
     [],
   );
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
-      <div className="max-w-7xl mx-auto px-6 py-20">
+    <div
+      className={`${transparent ? "" : "min-h-screen bg-gradient-to-br from-background via-background to-muted/20"}`}
+    >
+      <div className="max-w-7xl mx-auto px-6 py-12">
         {/* Header Section */}
-        <div className="text-center mb-20 animate-fade-in-up">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/5 border border-primary/10 mb-6">
-            <span className="text-2xl">👋</span>
-            <span className="text-sm font-medium text-muted-foreground">
-              About Me
-            </span>
+        {showTitle && (
+          <div className="text-center mb-12 animate-fade-in-up">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/5 border border-primary/10 mb-6">
+              <span className="text-2xl">👋</span>
+              <span className="text-sm font-medium text-muted-foreground">
+                About Me
+              </span>
+            </div>
+            <h1 className="text-5xl md:text-6xl font-bold text-gradient mb-6 tracking-tight">
+              Adrij Bhadra
+            </h1>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+              Passionate Full Stack Developer crafting exceptional digital
+              experiences
+            </p>
           </div>
-          <h1 className="text-5xl md:text-6xl font-bold text-gradient mb-6 tracking-tight">
-            Adrij Bhadra
-          </h1>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Passionate Full Stack Developer crafting exceptional digital
-            experiences
-          </p>
-        </div>
+        )}
 
         {/* About Section */}
-        <div className="grid lg:grid-cols-2 gap-16 items-center mb-24">
+        <div className="grid lg:grid-cols-2 gap-16 items-center mb-12">
           <div className="space-y-6 animate-fade-in-up">
             <div className="prose prose-lg dark:prose-invert max-w-none">
               <p className="text-lg leading-8 text-foreground/80">
