@@ -11,6 +11,7 @@ import {
 import { Badge } from "@/components/shadcn-ui/badge";
 import { Card } from "@/components/shadcn-ui/card";
 import { NeonGradientCard } from "@/components/magic-ui/neon-gradient-card";
+import { NumberTicker } from "@/components/magic-ui/number-ticker";
 import { useTheme } from "next-themes";
 import { ArrowUpRight, Sparkles, Trophy, Users, Code2 } from "lucide-react";
 
@@ -123,7 +124,8 @@ const projects = [
 
 const certifications = [
   {
-    logoUrl: "/fullstack.png",
+    logoUrl:
+      "https://sangamuniversity.ac.in/wp-content/uploads/2023/03/nptel.jpg",
     altText: "NPTEL",
     title: "Cloud Computing and Distributed Systems",
     subtitle: "NPTEL · NPTEL25CS12S448000355",
@@ -134,7 +136,8 @@ const certifications = [
       "Comprehensive certification covering cloud computing fundamentals, distributed system architectures, and modern cloud practices.",
   },
   {
-    logoUrl: "/fullstack.png",
+    logoUrl:
+      "https://www.presentations.gov.in/wp-content/uploads/2020/06/Preview-22.png",
     altText: "CDAC",
     title: "Bootcamp on Big Data and Data Science",
     subtitle: "CDAC Noida · FSP/BCMP/C-DAC/NOI/B01/2501/1604/332745",
@@ -145,7 +148,8 @@ const certifications = [
       "Intensive bootcamp covering big data technologies, data science methodologies, statistical analysis, and practical applications in real-world scenarios.",
   },
   {
-    logoUrl: "/fullstack.png",
+    logoUrl:
+      "https://cyber-rebels.co.uk/wp-content/uploads/2025/05/1601388765_cisco-networking-academy-logo-standard-v2-4x.png",
     altText: "Cisco",
     title: "JavaScript Essentials 1",
     subtitle: "Cisco Networking Academy program",
@@ -303,11 +307,11 @@ const CertificationCard = memo(function CertificationCard({ cert, index }) {
         <div className="p-6">
           <div className="flex items-start gap-4 mb-4">
             <div className="relative">
-              <Avatar className="size-12 border-2 border-border/50 bg-background/50 backdrop-blur-sm shadow-md">
+              <Avatar className="size-12 border-2 border-border/50 bg-white dark:bg-white shadow-md">
                 <AvatarImage
                   src={cert.logoUrl}
                   alt={cert.altText}
-                  className="object-contain p-1"
+                  className="object-contain p-2"
                 />
                 <AvatarFallback className="text-sm font-semibold text-primary">
                   {cert.altText[0]}
@@ -513,8 +517,16 @@ function WorkExperiencePage() {
                 </div>
 
                 {/* Content Section */}
-                <div className="relative w-full lg:w-1/2 p-5 md:p-7 lg:p-8 flex flex-col justify-center">
-                  <div className="space-y-4">
+                <div className="relative w-full lg:w-1/2 p-5 md:p-7 lg:p-8 flex flex-col justify-center overflow-hidden">
+                  {/* Animated gradient background */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-purple-500/5 opacity-50"></div>
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-cyan-500/10 to-transparent rounded-full blur-3xl animate-pulse"></div>
+                  <div
+                    className="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-purple-500/10 to-transparent rounded-full blur-3xl animate-pulse"
+                    style={{ animationDelay: "1s" }}
+                  ></div>
+
+                  <div className="relative space-y-4">
                     {/* Title Section */}
                     <div>
                       <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 leading-tight">
@@ -566,12 +578,32 @@ function WorkExperiencePage() {
                       community.
                     </p>
 
-                    {/* Stats row */}
-                    <div className="flex justify-center pt-4 border-t border-border/50">
-                      <div className="text-center">
-                        <p className="text-2xl font-bold text-foreground">5+</p>
-                        <p className="text-xs text-muted-foreground">
-                          Events Organized
+                    {/* Enhanced Stats Grid */}
+                    <div className="grid grid-cols-2 gap-6 pt-6 border-t border-border/30">
+                      <div className="text-center group/stat">
+                        <div className="flex items-center justify-center mb-2">
+                          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500/20 to-cyan-500/20 flex items-center justify-center group-hover/stat:scale-110 transition-transform duration-300">
+                            <span className="text-xl">🎯</span>
+                          </div>
+                        </div>
+                        <p className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 dark:from-blue-400 dark:to-cyan-400 bg-clip-text text-transparent">
+                          <NumberTicker value={5} />+
+                        </p>
+                        <p className="text-xs text-muted-foreground mt-1">
+                          Events
+                        </p>
+                      </div>
+                      <div className="text-center group/stat">
+                        <div className="flex items-center justify-center mb-2">
+                          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center group-hover/stat:scale-110 transition-transform duration-300">
+                            <span className="text-xl">👥</span>
+                          </div>
+                        </div>
+                        <p className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400 bg-clip-text text-transparent">
+                          <NumberTicker value={300} />+
+                        </p>
+                        <p className="text-xs text-muted-foreground mt-1">
+                          Students
                         </p>
                       </div>
                     </div>

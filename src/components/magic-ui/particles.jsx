@@ -73,6 +73,11 @@ const Particles = memo(function Particles({
   // Update RGB when color changes
   useEffect(() => {
     rgbRef.current = hexToRgb(color);
+    // Completely reinitialize particles when color changes
+    if (canvasRef.current && context.current) {
+      circles.current = [];
+      initCanvas();
+    }
   }, [color]);
 
   useEffect(() => {

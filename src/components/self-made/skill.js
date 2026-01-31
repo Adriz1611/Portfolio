@@ -2,6 +2,10 @@
 
 import React, { memo, useMemo } from "react";
 import dynamic from "next/dynamic";
+import BlurFade from "../magic-ui/blur-fade";
+import { Highlighter } from "../magic-ui/highlighter";
+import { Badge } from "../shadcn-ui/badge";
+import { Sparkles, Code2, Award } from "lucide-react";
 
 // Lazy load heavy icon cloud component
 const IconCloud = dynamic(() => import("../magic-ui/icon-cloud"), {
@@ -139,59 +143,82 @@ const Skill = ({ showTitle = true, transparent = false }) => {
         )}
 
         {/* About Section */}
-        <div className="grid lg:grid-cols-2 gap-16 items-center mb-12">
-          <div className="space-y-6 animate-fade-in-up">
-            <div className="prose prose-lg dark:prose-invert max-w-none">
-              <p className="text-lg leading-8 text-foreground/80">
-                Currently in my{" "}
-                <span className="font-semibold text-foreground">
-                  4th year of B.Tech in Computer Science and Business Systems
-                </span>{" "}
-                at SRM Institute of Science and Technology, New Delhi. I'm
-                passionate about creating solutions that solve real-world
-                problems and building tools that make a difference. Maintaining
-                a CGPA of 8.89/10.
-              </p>
-              <p className="text-lg leading-8 text-foreground/80">
-                My expertise spans across{" "}
-                <span className="font-semibold text-foreground">
-                  Full Stack Development
-                </span>
-                ,
-                <span className="font-semibold text-foreground">
-                  {" "}
-                  Cloud Computing & DevOps
-                </span>
-                , and
-                <span className="font-semibold text-foreground">
-                  {" "}
-                  Data Science
-                </span>
-                . I specialize in building scalable applications using modern
-                technologies like Next.js, React, and cloud platforms including
-                AWS, Azure, and GCP.
-              </p>
-              <p className="text-lg leading-8 text-foreground/80">
-                I'm proficient with containerization technologies like{" "}
-                <span className="font-semibold text-foreground">
-                  Docker and Kubernetes
-                </span>
-                , and have experience implementing{" "}
-                <span className="font-semibold text-foreground">
-                  CI/CD pipelines
-                </span>{" "}
-                for seamless deployments.
-              </p>
-            </div>
-          </div>
+        <BlurFade delay={0.2} inView>
+          <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
+            <div className="space-y-6">
+              {/* Stats badges */}
+              <div className="flex flex-wrap gap-3 mb-6">
+                <Badge
+                  variant="outline"
+                  className="px-4 py-2 text-sm bg-blue-500/10 border-blue-500/30 text-blue-600 dark:text-blue-400"
+                >
+                  <Award className="w-4 h-4 mr-2" />
+                  CGPA: 8.89/10
+                </Badge>
+                <Badge
+                  variant="outline"
+                  className="px-4 py-2 text-sm bg-purple-500/10 border-purple-500/30 text-purple-600 dark:text-purple-400"
+                >
+                  <Code2 className="w-4 h-4 mr-2" />
+                  4th Year B.Tech
+                </Badge>
+                <Badge
+                  variant="outline"
+                  className="px-4 py-2 text-sm bg-green-500/10 border-green-500/30 text-green-600 dark:text-green-400"
+                >
+                  <Sparkles className="w-4 h-4 mr-2" />
+                  SRM IST
+                </Badge>
+              </div>
 
-          <div className="relative animate-fade-in-up">
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-400/20 via-purple-400/20 to-pink-400/20 rounded-3xl blur-3xl"></div>
-            <div className="relative bg-card/50 backdrop-blur-xl rounded-3xl p-8 border border-border/50">
-              <IconCloud iconSlugs={slugs} />
+              <div className="space-y-5">
+                <p className="text-lg leading-relaxed text-muted-foreground">
+                  Currently pursuing my{" "}
+                  <Highlighter
+                    action="underline"
+                    color="#3b82f6"
+                    strokeWidth={2.5}
+                    isView
+                  >
+                    <span className="text-foreground font-semibold">
+                      B.Tech in Computer Science and Business Systems
+                    </span>
+                  </Highlighter>{" "}
+                  at SRM Institute of Science and Technology, New Delhi. I'm
+                  driven by creating{" "}
+                  <Highlighter action="highlight" color="#a78bfa40" isView>
+                    <span className="text-foreground">
+                      innovative solutions
+                    </span>
+                  </Highlighter>{" "}
+                  that solve real-world problems.
+                </p>
+
+                <div className="p-5 rounded-xl bg-gradient-to-br from-blue-500/5 via-purple-500/5 to-pink-500/5 border border-border/50">
+                  <p className="text-base leading-relaxed text-muted-foreground text-center">
+                    Passionate about building{" "}
+                    <span className="text-foreground font-semibold">
+                      scalable web applications
+                    </span>{" "}
+                    and{" "}
+                    <span className="text-foreground font-semibold">
+                      cloud infrastructure
+                    </span>
+                    . Always exploring new technologies and pushing boundaries
+                    in modern development.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 rounded-3xl blur-3xl animate-pulse"></div>
+              <div className="relative bg-card/50 backdrop-blur-xl rounded-3xl p-8 border border-border/50 shadow-2xl">
+                <IconCloud iconSlugs={slugs} />
+              </div>
             </div>
           </div>
-        </div>
+        </BlurFade>
 
         {/* Skills Section (Rewritten) */}
         <section

@@ -1,12 +1,73 @@
 "use client";
 
-import { useTheme } from "next-themes";
-import { useEffect, useState, useMemo, lazy, Suspense } from "react";
+import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
-import WordPullUp from "@/components/magic-ui/word-pull-up";
-import InteractiveHoverButton from "@/components/magic-ui/interactive-hover-button";
-import { RainbowButton } from "@/components/magic-ui/rainbow-button";
 import Link from "next/link";
+
+// Critical path components - loaded immediately
+import WordPullUp from "@/components/magic-ui/word-pull-up";
+
+// Deferred components - loaded after initial render
+const InteractiveHoverButton = dynamic(
+  () => import("@/components/magic-ui/interactive-hover-button"),
+  { ssr: true },
+);
+
+const RainbowButton = dynamic(
+  () =>
+    import("@/components/magic-ui/rainbow-button").then(
+      (mod) => mod.RainbowButton,
+    ),
+  { ssr: true },
+);
+
+const Terminal = dynamic(
+  () =>
+    import("@/components/magic-ui/terminal").then((mod) => ({
+      default: mod.Terminal,
+    })),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="w-full max-w-md h-32 bg-muted/20 rounded-lg animate-pulse" />
+    ),
+  },
+);
+
+const TypingAnimation = dynamic(
+  () =>
+    import("@/components/magic-ui/terminal").then((mod) => ({
+      default: mod.TypingAnimation,
+    })),
+  { ssr: false },
+);
+
+const AnimatedSpan = dynamic(
+  () =>
+    import("@/components/magic-ui/terminal").then((mod) => ({
+      default: mod.AnimatedSpan,
+    })),
+  { ssr: false },
+);
+
+const ScrollVelocityContainer = dynamic(
+  () =>
+    import("@/components/magic-ui/scroll-based-velocity").then((mod) => ({
+      default: mod.ScrollVelocityContainer,
+    })),
+  {
+    ssr: false,
+    loading: () => <div className="w-full h-24 bg-muted/10 animate-pulse" />,
+  },
+);
+
+const ScrollVelocityRow = dynamic(
+  () =>
+    import("@/components/magic-ui/scroll-based-velocity").then((mod) => ({
+      default: mod.ScrollVelocityRow,
+    })),
+  { ssr: false },
+);
 
 // Lazy load heavy components
 const Particles = dynamic(() => import("@/components/magic-ui/particles"), {
@@ -23,16 +84,9 @@ const BorderBeam = dynamic(
 );
 
 export default function Page() {
-  const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => setMounted(true), []);
-
-  // Memoize particle color to prevent recalculation
-  const particleColor = useMemo(
-    () => (mounted && resolvedTheme === "dark" ? "#ffffff" : "#000000"),
-    [mounted, resolvedTheme],
-  );
 
   if (!mounted) {
     // Return minimal skeleton to prevent layout shift
@@ -50,12 +104,15 @@ export default function Page() {
 
   return (
     <main className="relative flex flex-col items-center justify-center min-h-screen min-w-full bg-background overflow-hidden">
-      <Particles
-        className="absolute inset-0 z-0"
-        quantity={150}
-        ease={80}
-        color={particleColor}
-      />
+      {mounted && (
+        <Particles
+          className="absolute inset-0 z-0"
+          quantity={80}
+          ease={80}
+          color="#ffffff"
+          staticity={50}
+        />
+      )}
 
       {/* Subtle border beam */}
       <div className="max-w-full max-h-full">
@@ -69,9 +126,51 @@ export default function Page() {
           <WordPullUp className="text-4xl md:text-6xl font-bold text-foreground">
             This is Adrij!
           </WordPullUp>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-            Full Stack Developer crafting exceptional digital experiences
+          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+            A generalist who codes. Full Stack • DevOps • Generative AI
           </p>
+        </div>
+
+        {/* Terminal Preview */}
+        <div className="w-full max-w-md">
+          <Terminal>
+            <TypingAnimation duration={50}>$ ls ~/projects</TypingAnimation>
+            <AnimatedSpan className="text-green-500">
+              building cool stuff ✓
+            </AnimatedSpan>
+            <TypingAnimation duration={50}>$ git status</TypingAnimation>
+            <AnimatedSpan className="text-blue-400">
+              ready to ship something amazing
+            </AnimatedSpan>
+          </Terminal>
+        </div>
+
+        {/* Scrolling Tech Stack */}
+        <div className="w-full pt-8">
+          <ScrollVelocityContainer className="text-2xl md:text-3xl font-bold">
+            <ScrollVelocityRow baseVelocity={15} direction={1}>
+              <span className="mx-8 text-muted-foreground/60">React.js</span>
+              <span className="mx-8 text-muted-foreground/60">Next.js</span>
+              <span className="mx-8 text-muted-foreground/60">Docker</span>
+              <span className="mx-8 text-muted-foreground/60">Kubernetes</span>
+              <span className="mx-8 text-muted-foreground/60">AWS</span>
+              <span className="mx-8 text-muted-foreground/60">Node.js</span>
+              <span className="mx-8 text-muted-foreground/60">Python</span>
+              <span className="mx-8 text-muted-foreground/60">TypeScript</span>
+            </ScrollVelocityRow>
+            <ScrollVelocityRow baseVelocity={15} direction={-1}>
+              <span className="mx-8 text-muted-foreground/60">PostgreSQL</span>
+              <span className="mx-8 text-muted-foreground/60">MongoDB</span>
+              <span className="mx-8 text-muted-foreground/60">Redis</span>
+              <span className="mx-8 text-muted-foreground/60">
+                GitHub Actions
+              </span>
+              <span className="mx-8 text-muted-foreground/60">Jenkins</span>
+              <span className="mx-8 text-muted-foreground/60">Linux</span>
+              <span className="mx-8 text-muted-foreground/60">Terraform</span>
+              <span className="mx-8 text-muted-foreground/60">OpenAI</span>
+            </ScrollVelocityRow>
+          </ScrollVelocityContainer>
         </div>
 
         {/* Action buttons */}

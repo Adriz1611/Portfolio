@@ -2,6 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Performance optimizations */
+@layer base {
+  * {
+    /* Enable hardware acceleration for animations */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Optimize images and media */
+  img,
+  video {
+    content-visibility: auto;
+  }
+
+  /* Reduce motion for accessibility and performance */
+  @media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -70,7 +97,8 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans;
+    @apply bg-background text-foreground;
+    font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
   }
 
   h1,
@@ -80,11 +108,12 @@
   h5,
   h6 {
     @apply font-semibold tracking-tight;
+    font-family: var(--font-space-grotesk), var(--font-inter), sans-serif;
   }
 
   code,
   pre {
-    font-family: 'JetBrains Mono', 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+    font-family: var(--font-jetbrains-mono), 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
   }
 }
 
@@ -152,4 +181,24 @@
 
 .animate-fade-in {
   animation: fade-in 0.4s ease-out;
+}
+
+@keyframes line-shadow {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 100% -100%;
+  }
+}
+
+.animate-line-shadow {
+  animation: line-shadow 15s linear infinite;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
 }

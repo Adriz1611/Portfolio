@@ -1,17 +1,14 @@
 "use client";
 
 import {
-  CalendarIcon,
   HomeIcon,
   MailIcon,
-  PencilIcon,
   LinkedinIcon,
   GithubIcon,
-  YoutubeIcon,
-  BriefcaseBusiness
+  BriefcaseBusiness,
 } from "lucide-react";
 import Link from "next/link";
-import React from "react";
+import React, { memo } from "react";
 import { buttonVariants } from "@/components/shadcn-ui/button";
 import { Separator } from "@/components/shadcn-ui/separator";
 import {
@@ -24,17 +21,15 @@ import { cn } from "@/lib/utils";
 import { Dock, DockIcon } from "@/components/magic-ui/dock";
 
 export const Icons = {
-  calendar: CalendarIcon,
   email: MailIcon,
   linkedin: LinkedinIcon,
   github: GithubIcon,
-  youtube: YoutubeIcon,
 };
 
 export const DATA = {
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
-    { href: "/portfolio", icon: BriefcaseBusiness, label: "Blog" },
+    { href: "/portfolio", icon: BriefcaseBusiness, label: "Portfolio" },
   ],
   contact: {
     social: {
@@ -57,7 +52,7 @@ export const DATA = {
   },
 };
 
-export default function Footer() {
+const Footer = memo(function Footer() {
   return (
     <div className="fixed bottom-10 w-full z-50">
       <TooltipProvider>
@@ -71,7 +66,7 @@ export default function Footer() {
                     aria-label={item.label}
                     className={cn(
                       buttonVariants({ variant: "ghost", size: "icon" }),
-                      "size-12 rounded-full"
+                      "size-12 rounded-full",
                     )}
                   >
                     <item.icon className="size-4" />
@@ -94,7 +89,7 @@ export default function Footer() {
                     aria-label={social.name}
                     className={cn(
                       buttonVariants({ variant: "ghost", size: "icon" }),
-                      "size-12 rounded-full"
+                      "size-12 rounded-full",
                     )}
                   >
                     <social.icon className="size-4" />
@@ -110,4 +105,6 @@ export default function Footer() {
       </TooltipProvider>
     </div>
   );
-}
+});
+
+export default Footer;
