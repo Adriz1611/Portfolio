@@ -33,7 +33,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata = {
-  metadataBase: new URL("https://adriz.dev"),
+  metadataBase: new URL("https://adriz.me"),
   title: {
     default: "Adrij Bhadra | Full Stack Developer",
     template: "%s | Adrij Bhadra",
